@@ -1,5 +1,16 @@
 ![qfly | Qualisys Drone SDK](https://qualisys.github.io/qualisys_drone_sdk/qfly_banner.png)
+# Modified Qualysis Drone SDK
+## Setup
+1. install uv
+2. clone this repository
+3. run ```uv sync```
 
+## Modified part
+- 250416: changed ```set_speed_limit``` function in ```qfly/crazyflie.py``` to fix outdated parameters.
+
+## For Developers
+- please update this README.md if you modified any code in this repository because we cannot use issues for forked repositories.
+---original README.md---
 # Qualisys Drone SDK
 
 qfly | Qualisys Drone SDK is a Python library to track and fly drones with [Qualisys motion capture systems](https://qualisys.com/). It is designed to be an entry point for students, researchers, engineers, artists, and designers to develop drone applications. 
