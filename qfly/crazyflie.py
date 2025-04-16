@@ -312,19 +312,23 @@ class QualisysCrazyflie(Thread):
         self.cf.commander.send_position_setpoint(
             target.x, target.y, target.z, target.yaw)
 
-    def set_speed_limit(self, speed_limit):
+    def set_speed_limit(self, horizontal_speed_limit, vertical_speed_limit):
         """
         Sets speed in horizontal (xy) and vertical (z) dimensions.
 
         Parameters
         ----------
-        speed_limit : float
+        horizontal_speed_limit : float
+        vertical_speed_limit : float
             Speed limit.
             (Unit: m/s)
         """
-        print(f'[{self.cf_body_name}@{self.cf_uri}] Speed limit: {speed_limit} m/s')
-        self.cf.param.set_value('posCtlPid.xyVelMax', speed_limit)
-        self.cf.param.set_value('posCtlPid.zVelMax', speed_limit)
+        print(f'[{self.cf_body_name}@{self.cf_uri}] Horizontal speed limit: {horizontal_speed_limit} m/s')
+        print(f'[{self.cf_body_name}@{self.cf_uri}] Vertical speed limit: {vertical_speed_limit} m/s')
+        # Set speed limits
+        self.cf.param.set_value('posCtlPid.xVelMax', horizontal_speed_limit)
+        self.cf.param.set_value('posCtlPid.yVelMax', horizontal_speed_limit)
+        self.cf.param.set_value('posCtlPid.zVelMax', vertical_speed_limit)
 
     def setup(self):
         """
@@ -399,19 +403,6 @@ class QualisysCrazyflie(Thread):
             https://www.bitcraze.io/documentation/repository/crazyflie-firmware/master/api/params/#ring
         """
         self.cf.param.set_value('ring.effect', val)
-
-    def set_speed_limit(self, speed_limit):
-        """
-        Set speed limit.
-
-        Parameters
-        ----------
-        speed_limit : float
-            Limit for horizontal (xy) and vertical (z) speed. (unit: m/s)
-        """
-        print(f'[{self.cf_body_name}@{self.cf_uri}] Speed limit: {speed_limit} m/s')
-        self.cf.param.set_value('posCtlPid.xyVelMax', speed_limit)
-        self.cf.param.set_value('posCtlPid.zVelMax', speed_limit)
 
     def _set_pose(self, pose):
         """
