@@ -7,9 +7,11 @@
 
 ## Modified part
 - 250416: changed ```set_speed_limit``` function in ```qfly/crazyflie.py``` to fix outdated parameters.
+- 250416: moved all the original example codes to ```examples/original```
 
 ## For Developers
 - please update this README.md if you modified any code in this repository because we cannot use issues for forked repositories.
+- if you created a new code to control flappers or crazyflies, please add the codes in the ```example``` folder.
 ---original README.md---
 # Qualisys Drone SDK
 
