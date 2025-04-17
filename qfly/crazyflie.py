@@ -93,7 +93,7 @@ class QualisysCrazyflie(Thread):
         self.set_led_ring(0)
 
         # Slow down
-        self.set_speed_limit(self.world.speed_limit)
+        self.set_speed_limit(self.world.speed_limit, self.world.speed_limit)
 
         self.qtm = qfly.QtmWrapper(
             self.cf_body_name,
