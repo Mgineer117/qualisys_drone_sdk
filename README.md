@@ -8,6 +8,7 @@
 ## Modified part
 - 250416: changed ```set_speed_limit``` function in ```qfly/crazyflie.py``` to fix outdated parameters.
 - 250416: moved all the original example codes to ```examples/original```
+- 250418: set PID gains of all cascade controllers (to be tested)
 
 ## For Developers
 - please update this README.md if you modified any code in this repository because we cannot use issues for forked repositories.
