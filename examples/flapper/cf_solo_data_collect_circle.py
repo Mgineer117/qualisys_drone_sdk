@@ -8,21 +8,24 @@ ESC to land at any time.
 import json
 from datetime import datetime
 from time import sleep, time
+from cflib.crazyflie.log import LogConfig
+from cflib.crazyflie.syncLogger import SyncLogger
 import numpy as np
 import pynput
 from qfly import Pose, QualisysCrazyflie, World, utils
+from functools import partial
 
 # SETTINGS
 cf_body_name = "flapper"  # QTM rigid body name
 cf_uri = "radio://0/80/2M/E7E7E7E701"  # Crazyflie address
 cf_marker_ids = [1, 2, 3, 4]  # Active marker IDs
 circle_radius = 0.5  # Radius of the circular flight path
-circle_speed_factor = 15  # How fast the Crazyflie should move along circle [degree/s]
+circle_axis = 'Z' # Axis to circle around: 'X' or 'Y' or 'Z'
+circle_speed_factor = 10  # How fast the Crazyflie should move along circle [degree/s]
 qtm_ip = "128.174.245.190"
 
 # Watch key presses with a global variable
 last_key_pressed = None
-
 
 # Set up keyboard callback
 def on_press(key):
@@ -32,14 +35,58 @@ def on_press(key):
     if key == pynput.keyboard.Key.esc:
         fly = False
 
+def log_callback(timestamp, data, logconf, data_log, key):
+    print(f"{timestamp}, {data}, {logconf.name}")
+    data_log[key].append(data)
 
 # Listen to the keyboard
 listener = pynput.keyboard.Listener(on_press=on_press)
 listener.start()
 
-
 # Set up world - the World object comes with sane defaults
-world = World(expanse=5.0, speed_limit=1.1)
+world = World(expanse=2.0, speed_limit=1.1)
+
+# Set up the asynchronous log configuration
+conf_list = []
+group_list = ["stabilizer", "pos", "vel", "acc", "motor", "motor_req", "gyro", "target"]
+for group in group_list:
+    logconf = LogConfig(name=group, period_in_ms=100)
+    if group == "stabilizer":
+        logconf.add_variable('stabilizer.roll', 'float')
+        logconf.add_variable('stabilizer.pitch', 'float')
+        logconf.add_variable('stabilizer.yaw', 'float')
+        logconf.add_variable('stabilizer.thrust', 'float')
+    if group == "pos":
+        logconf.add_variable('stateEstimate.x', 'float')
+        logconf.add_variable('stateEstimate.y', 'float')
+        logconf.add_variable('stateEstimate.z', 'float')
+    if group == "vel":
+        logconf.add_variable('stateEstimate.vx', 'float')
+        logconf.add_variable('stateEstimate.vy', 'float')
+        logconf.add_variable('stateEstimate.vz', 'float')
+    if group == "acc":
+        logconf.add_variable('stateEstimate.ax', 'float')
+        logconf.add_variable('stateEstimate.ay', 'float')
+        logconf.add_variable('stateEstimate.az', 'float')
+    if group == "motor":    
+        logconf.add_variable('motor.m1', 'float')
+        logconf.add_variable('motor.m2', 'float')
+        logconf.add_variable('motor.m3', 'float')
+        logconf.add_variable('motor.m4', 'float')
+    if group == "motor_req":
+        logconf.add_variable('motor.m1req', 'float')
+        logconf.add_variable('motor.m2req', 'float')
+        logconf.add_variable('motor.m3req', 'float')
+        logconf.add_variable('motor.m4req', 'float')
+    if group == "gyro":
+        logconf.add_variable('gyro.x', 'float')
+        logconf.add_variable('gyro.y', 'float')
+        logconf.add_variable('gyro.z', 'float')
+    if group == "target":
+        logconf.add_variable('ctrltarget.x', 'float')
+        logconf.add_variable('ctrltarget.y', 'float')
+        logconf.add_variable('ctrltarget.z', 'float')
+    conf_list.append(logconf)
 
 # Prepare for liftoff
 with QualisysCrazyflie(
@@ -52,6 +99,22 @@ with QualisysCrazyflie(
     save_freq = 0.01
     dt = 0
 
+    # Set PID attitude controller gains
+    #Set PID gains for roll
+    qcf.cf.param.set_value('pid_attitude.roll_kp', 10.0) #default: 10
+    qcf.cf.param.set_value('pid_attitude.roll_ki', 0.0) #default: 0.0
+    qcf.cf.param.set_value('pid_attitude.roll_kd', 0.2) #default: 0.2
+
+    # Set PID gains for pitch
+    qcf.cf.param.set_value('pid_attitude.pitch_kp', 13.0) #default 13.0
+    qcf.cf.param.set_value('pid_attitude.pitch_ki', 0.0) # default: 0.0
+    qcf.cf.param.set_value('pid_attitude.pitch_kd', 1.0) #default: 1.0
+
+    # Set PID gains for yaw
+    qcf.cf.param.set_value('pid_attitude.yaw_kp', 8.0) #default: 8.0
+    qcf.cf.param.set_value('pid_attitude.yaw_ki', 0.0) #default: 0.0
+    qcf.cf.param.set_value('pid_attitude.yaw_kd', 0.35) #default: 0.35
+
     print("Beginning maneuvers...")
     data = {}
     data["radius"] = circle_radius
@@ -60,6 +123,18 @@ with QualisysCrazyflie(
     data["pose"] = []
     data["time"] = []
     data["control"] = []
+
+    # Asyncronous logging
+    for group in group_list:
+        data[group] = []
+    data["time"] = []
+    for logconf in conf_list:
+        qcf.cf.log.add_config(logconf)
+    for group, logconf in zip(group_list, conf_list):
+        callback = partial(log_callback, data_log=data, key=group)
+        logconf.data_received_cb.add_callback(callback)
+        logconf.start()
+    
     # MAIN LOOP WITH SAFETY CHECK
     while qcf.is_safe():
 
@@ -80,35 +155,32 @@ with QualisysCrazyflie(
             target = Pose(world.origin.x, world.origin.y, 1.0)
             # Engage
             qcf.safe_position_setpoint(target)
-        # Move out and circle around Z axis
-        # elif dt < 40:
-        #     print(f"[t={dt}] Maneuvering - Circle around Z...")
-        #     # Set target
-        #     _x, _y = utils.pol2cart(circle_radius, phi)
-        #     target = Pose(world.origin.x + _x, world.origin.y + _y, 1.0)
-        #     # Engage
-        #     qcf.safe_position_setpoint(target)
-        elif dt < 40:
-            print(f'[t={int(dt)}] Maneuvering - Circle around X...')
-            # Set target
-            _y, _z = utils.pol2cart(circle_radius, 5 * phi)
-            _x, _y = utils.pol2cart(circle_radius * 1.75, phi)
-            target = Pose(world.origin.x + _x,
-                          world.origin.y + _y,
-                          1.25 + _z)
-            # Engage
-            qcf.safe_position_setpoint(target)
-        # elif dt < 40:
-        #     print(f'[t={int(dt)}] Maneuvering - Circle around Y...')
-        #     # Set target
-        #     _x, _z = utils.pol2cart(circle_radius, phi)
-        #     target = Pose(world.origin.x + _x,
-        #                   world.origin.y,
-        #                   1.25 + _z)
-        #     # Engage
-        #     qcf.safe_position_setpoint(target)
+
+        elif dt < 50:
+            if circle_axis == 'Z':
+                print(f'[t={int(dt)}] Maneuvering - Circle around Z')
+                # Set target
+                _x, _y = utils.pol2cart(circle_radius, phi)
+                target = Pose(world.origin.x + _x, world.origin.y + _y, 1.0)
+                # Engage
+                qcf.safe_position_setpoint(target)
+            elif circle_axis == 'Y':
+                print(f'[t={int(dt)}] Maneuvering - Circle around Y')
+                # Set target
+                _x, _z = utils.pol2cart(circle_radius, phi)
+                target = Pose(world.origin.x + _x, world.origin.y, 1.0 + _z)
+                # Engage
+                qcf.safe_position_setpoint(target)
+            elif circle_axis == 'X':
+                print(f'[t={int(dt)}] Maneuvering - Circle around X')
+                # Set target
+                _y, _z = utils.pol2cart(circle_radius, phi)
+                target = Pose(world.origin.x, world.origin.y + _y, 1.0 + _z)
+                # Engage
+                qcf.safe_position_setpoint(target)
+        
         # Back to center
-        elif dt < 47:
+        elif dt < 57:
             print(f"[t={dt}] Maneuvering - Center...")
             # Set target
             target = Pose(world.origin.x, world.origin.y, 1.0)
@@ -116,6 +188,8 @@ with QualisysCrazyflie(
             qcf.safe_position_setpoint(target)
                 # Move out and circle around Y axis
         else:
+            for logconf in conf_list:
+                logconf.stop()
             break
         
         if time() - last_saved_t > save_freq:
@@ -133,11 +207,11 @@ with QualisysCrazyflie(
             data["time"].append(time())
             data["control"].append((target.x, target.y, target.z))
             last_saved_t = time()
+        
         if not qcf.is_safe():
             print("not safe")
+        
         """
-
-
         # Back to center
         elif dt < 45:
             print(f'[t={int(dt)}] Maneuvering - Center...')
@@ -167,7 +241,7 @@ with QualisysCrazyflie(
         """
 
     # Land
-    first_z= qcf.pose.z
+    first_z = qcf.pose.z
     landing_time = 5
     start_time = time()
     while qcf.pose.z > 0.40:
@@ -181,5 +255,5 @@ current_time = time()
 
 # Convert the time to a human-readable format
 formatted_time = datetime.fromtimestamp(current_time).strftime("%Y%m%d%H%M%S")
-with open(formatted_time + ".json", "w") as file:
+with open("circular_traj/circular_" + circle_axis + "_" + formatted_time + ".json", "w") as file:
     json.dump(data, file, indent=4)

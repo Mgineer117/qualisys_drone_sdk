@@ -11,10 +11,11 @@ from cflib.crazyflie.log import LogConfig
 from cflib.crazyflie.syncLogger import SyncLogger
 import pynput
 from qfly import Pose, QualisysCrazyflie, World, utils
-from functools import partial 
+from functools import partial
+
 # SETTINGS
 cf_body_name = "flapper"  # QTM rigid body name
-cf_uri = "radio://0/80/2M/E7E7E7E7E7"  # Crazyflie address
+cf_uri = "radio://0/80/2M/E7E7E7E701"  # Crazyflie address
 cf_marker_ids = [1, 2, 3, 4]  # Active marker IDs
 circle_radius = 0.5  # Radius of the circular flight path
 circle_speed_factor = 0.12  # How fast the Crazyflie should move along circle
@@ -38,8 +39,6 @@ def log_callback(timestamp, data, logconf, data_log, key):
     print(f"{timestamp}, {data}, {logconf.name}")
     data_log[key].append(data)
 
-
-
 # position, velocity, time, control
 data = {}
 # Listen to the keyboard
@@ -49,8 +48,9 @@ listener.start()
 
 # Set up world - the World object comes with sane defaults
 world = World()
-conf_list = []
 
+# Set up asyncronous logging configuration
+conf_list = []
 group_list = ["stabilizer", "pos", "vel", "acc", "motor", "motor_req", "gyro", "target"]
 for group in group_list:
     logconf = LogConfig(name=group, period_in_ms=100)
@@ -91,17 +91,35 @@ for group in group_list:
         logconf.add_variable('ctrltarget.z', 'float')
     conf_list.append(logconf)
 
-
 # Prepare for liftoff
 with QualisysCrazyflie(
     cf_body_name, cf_uri, world, marker_ids=cf_marker_ids, qtm_ip=qtm_ip
 ) as qcf:
 
-
-    
     # Let there be time
     t = time()
     dt = 0
+
+    # Get PID gains
+    #Set PID gains for x
+    #print("PID position x Kp", qcf.cf.param.get_value('pid.position_p'))
+    #print("PID position x Ki", qcf.cf.param.get_value('pid_position.x_ki'))
+    #print("PID position x Kd", qcf.cf.param.get_value('pid_position.x_kd'))
+
+    #Set PID gains for roll
+    print("PID attitude roll Kp", qcf.cf.param.get_value('pid_attitude.roll_kp'))
+    print("PID attitude roll Ki", qcf.cf.param.get_value('pid_attitude.roll_ki'))
+    print("PID attitude roll Kd", qcf.cf.param.get_value('pid_attitude.roll_kd'))
+
+    # Set PID gains for pitch
+    print("PID attitude pitch Kp", qcf.cf.param.get_value('pid_attitude.pitch_kp'))
+    print("PID attitude pitch Ki", qcf.cf.param.get_value('pid_attitude.pitch_ki'))
+    print("PID attitude pitch Kd", qcf.cf.param.get_value('pid_attitude.pitch_kd'))
+
+    # Set PID gains for yaw
+    print("PID attitude yaw Kp", qcf.cf.param.get_value('pid_attitude.yaw_kp'))
+    print("PID attitude yaw Ki", qcf.cf.param.get_value('pid_attitude.yaw_ki'))
+    print("PID attitude yaw Kd", qcf.cf.param.get_value('pid_attitude.yaw_kd'))
     
     for group in group_list:
         data[group] = []
@@ -132,7 +150,6 @@ with QualisysCrazyflie(
                 logconf.stop()
             break
     
-
 # Open a file in write mode and use json.dump() to write the dictionary to the file
 with open("data.json", "w") as file:
     json.dump(data, file, indent=4)
