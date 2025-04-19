@@ -350,7 +350,7 @@ with QualisysCrazyflie(
         print(qcf.pose.z)
         print("landing...")
         cur_time = time()
-        target = Pose(qcf.pose.x, qcf.pose.y, max(-0.20, first_z * (1 - (cur_time - start_time) / landing_time)))
+        target = Pose(world.origin.x, world.origin.y, max(-0.20, first_z * (1 - (cur_time - start_time) / landing_time)))
         qcf.safe_position_setpoint(target)
 # Get the current time in seconds since the epoch
 current_time = time()
