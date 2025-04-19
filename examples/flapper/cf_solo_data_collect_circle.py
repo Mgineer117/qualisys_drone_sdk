@@ -47,6 +47,7 @@ listener.start()
 world = World(expanse=2.0, speed_limit=1.1)
 
 # Set up the asynchronous log configuration
+# TODO: also log all the PID gains
 conf_list = []
 group_list = ["stabilizer", "pos", "vel", "acc", "motor", "motor_req", "gyro", "target"]
 for group in group_list:
@@ -99,21 +100,73 @@ with QualisysCrazyflie(
     save_freq = 0.01
     dt = 0
 
-    # Set PID attitude controller gains
-    #Set PID gains for roll
+    ## PID Tuning ##############################################################
+    # The following controllers are ordered from the low-level to the high-level
+    # TODO: run data_collection_test.py to get the default PID gains
+    # 1. Set PID attitude rate gains
+    """
+    # roll
+    qcf.cf.param.set_value('pid_rate.roll_kp', 10.0) #default: ?
+    qcf.cf.param.set_value('pid_rate.roll_ki', 0.0) #default: ?
+    qcf.cf.param.set_value('pid_rate.roll_kd', 0.2) #default: ?
+    # pitch
+    qcf.cf.param.set_value('pid_rate.pitch_kp', 13.0) #default ?
+    qcf.cf.param.set_value('pid_rate.pitch_ki', 0.0) # default: ?
+    qcf.cf.param.set_value('pid_rate.pitch_kd', 1.0) #default: ?
+    # yaw
+    qcf.cf.param.set_value('pid_rate.yaw_kp', 8.0) #default: ?
+    qcf.cf.param.set_value('pid_rate.yaw_ki', 0.0) #default: ?
+    qcf.cf.param.set_value('pid_rate.yaw_kd', 0.35) #default: ?
+    """
+
+    # 2. Set PID attitude gains
+    """
+    # roll
     qcf.cf.param.set_value('pid_attitude.roll_kp', 10.0) #default: 10
     qcf.cf.param.set_value('pid_attitude.roll_ki', 0.0) #default: 0.0
     qcf.cf.param.set_value('pid_attitude.roll_kd', 0.2) #default: 0.2
-
-    # Set PID gains for pitch
+    # pitch
     qcf.cf.param.set_value('pid_attitude.pitch_kp', 13.0) #default 13.0
     qcf.cf.param.set_value('pid_attitude.pitch_ki', 0.0) # default: 0.0
     qcf.cf.param.set_value('pid_attitude.pitch_kd', 1.0) #default: 1.0
-
-    # Set PID gains for yaw
+    # yaw
     qcf.cf.param.set_value('pid_attitude.yaw_kp', 8.0) #default: 8.0
     qcf.cf.param.set_value('pid_attitude.yaw_ki', 0.0) #default: 0.0
     qcf.cf.param.set_value('pid_attitude.yaw_kd', 0.35) #default: 0.35
+    """
+    
+    # 3. Set PID velocity gains
+    """
+    # vx
+    qcf.cf.param.set_value('velCtlPid.vxKp', 10.0) #default: ?
+    qcf.cf.param.set_value('velCtlPid.vxKi', 0.0) #default: ?
+    qcf.cf.param.set_value('velCtlPid.vxKd', 0.2) #default: ?
+    # vy
+    qcf.cf.param.set_value('velCtlPid.vyKp', 13.0) #default ?
+    qcf.cf.param.set_value('velCtlPid.vyKi', 0.0) # default: ?
+    qcf.cf.param.set_value('velCtlPid.vyKd', 1.0) #default: ?
+    # vz
+    qcf.cf.param.set_value('velCtlPid.vzKp', 8.0) #default: ?
+    qcf.cf.param.set_value('velCtlPid.vzKi', 0.0) #default: ?
+    qcf.cf.param.set_value('velCtlPid.vzKd', 0.35) #default: ?
+    """
+
+    # 4. Set PID position gains
+    """
+    # x
+    qcf.cf.param.set_value('posCtlPid.xKp', 10.0) #default: ?
+    qcf.cf.param.set_value('posCtlPid.xKi', 0.0) #default: ?
+    qcf.cf.param.set_value('posCtlPid.xKd', 0.2) #default: ?
+    # y
+    qcf.cf.param.set_value('posCtlPid.yKp', 13.0) #default ?
+    qcf.cf.param.set_value('posCtlPid.yKi', 0.0) # default: ?
+    qcf.cf.param.set_value('posCtlPid.yKd', 1.0) #default: ?
+    # z
+    qcf.cf.param.set_value('posCtlPid.zKp', 8.0) #default: ?
+    qcf.cf.param.set_value('posCtlPid.zKi', 0.0) #default: ?
+    qcf.cf.param.set_value('posCtlPid.zKd', 0.35) #default: ?
+    """
+    ############################################################################
 
     print("Beginning maneuvers...")
     data = {}

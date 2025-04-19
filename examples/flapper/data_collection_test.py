@@ -100,26 +100,47 @@ with QualisysCrazyflie(
     t = time()
     dt = 0
 
-    # Get PID gains
-    #Set PID gains for x
-    #print("PID position x Kp", qcf.cf.param.get_value('pid.position_p'))
-    #print("PID position x Ki", qcf.cf.param.get_value('pid_position.x_ki'))
-    #print("PID position x Kd", qcf.cf.param.get_value('pid_position.x_kd'))
-
-    #Set PID gains for roll
+    # Get and print the PID gains
+    # TODO: reset the firmware and print the default PID gains
+    print("PID attitude rate roll Kp", qcf.cf.param.get_value('pid_rate.roll_kp'))
+    print("PID attitude rate roll Ki", qcf.cf.param.get_value('pid_rate.roll_ki'))
+    print("PID attitude rate roll Kd", qcf.cf.param.get_value('pid_rate.roll_kd'))
+    print("PID attitude rate pitch Kp", qcf.cf.param.get_value('pid_rate.pitch_kp'))
+    print("PID attitude rate pitch Ki", qcf.cf.param.get_value('pid_rate.pitch_ki'))
+    print("PID attitude rate pitch Kd", qcf.cf.param.get_value('pid_rate.pitch_kd'))
+    print("PID attitude rate yaw Kp", qcf.cf.param.get_value('pid_rate.yaw_kp'))
+    print("PID attitude rate yaw Ki", qcf.cf.param.get_value('pid_rate.yaw_ki'))
+    print("PID attitude rate yaw Kd", qcf.cf.param.get_value('pid_rate.yaw_kd'))
+    #
     print("PID attitude roll Kp", qcf.cf.param.get_value('pid_attitude.roll_kp'))
     print("PID attitude roll Ki", qcf.cf.param.get_value('pid_attitude.roll_ki'))
     print("PID attitude roll Kd", qcf.cf.param.get_value('pid_attitude.roll_kd'))
-
-    # Set PID gains for pitch
     print("PID attitude pitch Kp", qcf.cf.param.get_value('pid_attitude.pitch_kp'))
     print("PID attitude pitch Ki", qcf.cf.param.get_value('pid_attitude.pitch_ki'))
     print("PID attitude pitch Kd", qcf.cf.param.get_value('pid_attitude.pitch_kd'))
-
-    # Set PID gains for yaw
     print("PID attitude yaw Kp", qcf.cf.param.get_value('pid_attitude.yaw_kp'))
     print("PID attitude yaw Ki", qcf.cf.param.get_value('pid_attitude.yaw_ki'))
     print("PID attitude yaw Kd", qcf.cf.param.get_value('pid_attitude.yaw_kd'))
+    #
+    print("PID velocity vx Kp", qcf.cf.param.get_value('velCtlPid.vxKp'))
+    print("PID velocity vx Ki", qcf.cf.param.get_value('velCtlPid.vxKi'))
+    print("PID velocity vx Kd", qcf.cf.param.get_value('velCtlPid.vxKd'))
+    print("PID velocity vy Kp", qcf.cf.param.get_value('velCtlPid.vyKp'))
+    print("PID velocity vy Ki", qcf.cf.param.get_value('velCtlPid.vyKi'))
+    print("PID velocity vy Kd", qcf.cf.param.get_value('velCtlPid.vyKd'))
+    print("PID velocity vz Kp", qcf.cf.param.get_value('velCtlPid.vzKp'))
+    print("PID velocity vz Ki", qcf.cf.param.get_value('velCtlPid.vzKi'))
+    print("PID velocity vz Kd", qcf.cf.param.get_value('velCtlPid.vzKd'))
+    #
+    print("PID position x Kp", qcf.cf.param.get_value('posCtlPid.xKp'))
+    print("PID position x Ki", qcf.cf.param.get_value('posCtlPid.xKi'))
+    print("PID position x Kd", qcf.cf.param.get_value('posCtlPid.xKd'))
+    print("PID position y Kp", qcf.cf.param.get_value('posCtlPid.yKp'))
+    print("PID position y Ki", qcf.cf.param.get_value('posCtlPid.yKi'))
+    print("PID position y Kd", qcf.cf.param.get_value('posCtlPid.yKd'))
+    print("PID position z Kp", qcf.cf.param.get_value('posCtlPid.zKp'))
+    print("PID position z Ki", qcf.cf.param.get_value('posCtlPid.zKi'))
+    print("PID position z Kd", qcf.cf.param.get_value('posCtlPid.zKd'))
     
     for group in group_list:
         data[group] = []
