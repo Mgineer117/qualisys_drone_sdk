@@ -17,7 +17,7 @@ from functools import partial
 
 # SETTINGS
 cf_body_name = "flapper"  # QTM rigid body name
-cf_uri = "radio://0/80/2M/E7E7E7E701"  # Crazyflie address
+cf_uri = "radio://0/80/2M/E7E7E7E7E7"  # Crazyflie address
 cf_marker_ids = [1, 2, 3, 4]  # Active marker IDs
 circle_radius = 0.5  # Radius of the circular flight path
 circle_axis = 'Z' # Axis to circle around: 'X' or 'Y' or 'Z'
@@ -44,7 +44,7 @@ listener = pynput.keyboard.Listener(on_press=on_press)
 listener.start()
 
 # Set up world - the World object comes with sane defaults
-world = World(expanse=2.0, speed_limit=1.1)
+world = World(expanse=1.8, speed_limit=1.1)
 
 # Set up the asynchronous log configuration
 # TODO: also log all the PID gains
@@ -102,8 +102,7 @@ with QualisysCrazyflie(
 
     ## PID Tuning ##############################################################
     # The following controllers are ordered from the low-level to the high-level
-    # TODO: run data_collection_test.py to get the default PID gains
-    # TODO: Or use the cfclient to set all the PID gains
+    # TODO: use cfclient to set all PID gains
     # 1. Set PID attitude rate gains
     """
     # roll
@@ -119,7 +118,6 @@ with QualisysCrazyflie(
     qcf.cf.param.set_value('pid_rate.yaw_ki', 0.0) #default: ?
     qcf.cf.param.set_value('pid_rate.yaw_kd', 0.35) #default: ?
     """
-
     # 2. Set PID attitude gains
     """
     # roll
@@ -135,7 +133,6 @@ with QualisysCrazyflie(
     qcf.cf.param.set_value('pid_attitude.yaw_ki', 0.0) #default: 0.0
     qcf.cf.param.set_value('pid_attitude.yaw_kd', 0.35) #default: 0.35
     """
-    
     # 3. Set PID velocity gains
     """
     # vx
@@ -151,7 +148,6 @@ with QualisysCrazyflie(
     qcf.cf.param.set_value('velCtlPid.vzKi', 0.0) #default: ?
     qcf.cf.param.set_value('velCtlPid.vzKd', 0.35) #default: ?
     """
-
     # 4. Set PID position gains
     """
     # x
@@ -247,7 +243,7 @@ with QualisysCrazyflie(
         # Mind the clock
         dt = time() - t
 
-        # Calculate Crazyflie's angular position in circle, based on time
+        # Calculate Crazyflie's angular position [deg] in circle, based on time
         phi = circle_speed_factor * dt
 
         # Take off and hover in the center of safe airspace for 5 seconds
@@ -263,7 +259,7 @@ with QualisysCrazyflie(
                 print(f'[t={int(dt)}] Maneuvering - Circle around Z')
                 # Set target
                 _x, _y = utils.pol2cart(circle_radius, phi)
-                target = Pose(world.origin.x + _x, world.origin.y + _y, 1.0)
+                target = Pose(world.origin.x + _x, world.origin.y + _y, 1.0, yaw = 90 + phi)
                 # Engage
                 qcf.safe_position_setpoint(target)
             elif circle_axis == 'Y':
@@ -280,6 +276,7 @@ with QualisysCrazyflie(
                 target = Pose(world.origin.x, world.origin.y + _y, 1.0 + _z)
                 # Engage
                 qcf.safe_position_setpoint(target)
+            # TODO: circle_axis == 'XYZ'
         
         # Back to center
         elif dt < 57:
