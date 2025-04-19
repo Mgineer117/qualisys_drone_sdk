@@ -141,6 +141,54 @@ with QualisysCrazyflie(
     print("PID position z Kp", qcf.cf.param.get_value('posCtlPid.zKp'))
     print("PID position z Ki", qcf.cf.param.get_value('posCtlPid.zKi'))
     print("PID position z Kd", qcf.cf.param.get_value('posCtlPid.zKd'))
+    #
+    pid_gains = {
+        "pid_rate": {
+            "roll_kp": qcf.cf.param.get_value('pid_rate.roll_kp'),
+            "roll_ki": qcf.cf.param.get_value('pid_rate.roll_ki'),
+            "roll_kd": qcf.cf.param.get_value('pid_rate.roll_kd'),
+            "pitch_kp": qcf.cf.param.get_value('pid_rate.pitch_kp'),
+            "pitch_ki": qcf.cf.param.get_value('pid_rate.pitch_ki'),
+            "pitch_kd": qcf.cf.param.get_value('pid_rate.pitch_kd'),
+            "yaw_kp": qcf.cf.param.get_value('pid_rate.yaw_kp'),
+            "yaw_ki": qcf.cf.param.get_value('pid_rate.yaw_ki'),
+            "yaw_kd": qcf.cf.param.get_value('pid_rate.yaw_kd')
+        },
+        "pid_attitude": {
+            "roll_kp": qcf.cf.param.get_value('pid_attitude.roll_kp'),
+            "roll_ki": qcf.cf.param.get_value('pid_attitude.roll_ki'),
+            "roll_kd": qcf.cf.param.get_value('pid_attitude.roll_kd'),
+            "pitch_kp": qcf.cf.param.get_value('pid_attitude.pitch_kp'),
+            "pitch_ki": qcf.cf.param.get_value('pid_attitude.pitch_ki'),
+            "pitch_kd": qcf.cf.param.get_value('pid_attitude.pitch_kd'),
+            "yaw_kp": qcf.cf.param.get_value('pid_attitude.yaw_kp'),
+            "yaw_ki": qcf.cf.param.get_value('pid_attitude.yaw_ki'),
+            "yaw_kd": qcf.cf.param.get_value('pid_attitude.yaw_kd')
+        },
+        "velCtlPid": {
+            "vxKp": qcf.cf.param.get_value('velCtlPid.vxKp'),
+            "vxKi": qcf.cf.param.get_value('velCtlPid.vxKi'),
+            "vxKd": qcf.cf.param.get_value('velCtlPid.vxKd'),
+            "vyKp": qcf.cf.param.get_value('velCtlPid.vyKp'),
+            "vyKi": qcf.cf.param.get_value('velCtlPid.vyKi'),
+            "vyKd": qcf.cf.param.get_value('velCtlPid.vyKd'),
+            "vzKp": qcf.cf.param.get_value('velCtlPid.vzKp'),
+            "vzKi": qcf.cf.param.get_value('velCtlPid.vzKi'),
+            "vzKd": qcf.cf.param.get_value('velCtlPid.vzKd')
+        },
+        "posCtlPid": {
+            "xKp": qcf.cf.param.get_value('posCtlPid.xKp'),
+            "xKi": qcf.cf.param.get_value('posCtlPid.xKi'),
+            "xKd": qcf.cf.param.get_value('posCtlPid.xKd'),
+            "yKp": qcf.cf.param.get_value('posCtlPid.yKp'),
+            "yKi": qcf.cf.param.get_value('posCtlPid.yKi'),
+            "yKd": qcf.cf.param.get_value('posCtlPid.yKd'),
+            "zKp": qcf.cf.param.get_value('posCtlPid.zKp'),
+            "zKi": qcf.cf.param.get_value('posCtlPid.zKi'),
+            "zKd": qcf.cf.param.get_value('posCtlPid.zKd')
+        }
+    }
+    data["pid_gains"] = pid_gains
     
     for group in group_list:
         data[group] = []
