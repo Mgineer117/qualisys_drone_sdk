@@ -47,7 +47,6 @@ listener.start()
 world = World(expanse=1.8, speed_limit=1.1)
 
 # Set up the asynchronous log configuration
-# TODO: also log all the PID gains
 conf_list = []
 group_list = ["stabilizer", "pos", "vel", "acc", "motor", "motor_req", "gyro", "target"]
 for group in group_list:
@@ -100,7 +99,7 @@ with QualisysCrazyflie(
     save_freq = 0.01
     dt = 0
 
-    ## PID Tuning ##############################################################
+    ## PID Controllers ##############################################################
     # The following controllers are ordered from the low-level to high-level
     # TODO: To set the PID gains, use cfclient (see link below) instead of using the code
     # https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/userguides/userguide_client/tuning_tab/ 
@@ -223,7 +222,7 @@ with QualisysCrazyflie(
     data["time"] = []
     data["control"] = []
 
-    # Asyncronous logging
+    # Asyncronous logging from the flapper firmware
     for group in group_list:
         data[group] = []
     data["time"] = []
@@ -293,7 +292,7 @@ with QualisysCrazyflie(
             target = Pose(world.origin.x, world.origin.y, 1.0)
             # Engage
             qcf.safe_position_setpoint(target)
-                # Move out and circle around Y axis
+        
         else:
             break
         
