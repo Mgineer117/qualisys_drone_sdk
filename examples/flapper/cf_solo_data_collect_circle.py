@@ -20,7 +20,7 @@ cf_body_name = "flapper"  # QTM rigid body name
 cf_uri = "radio://0/80/2M/E7E7E7E7E7"  # Crazyflie address
 cf_marker_ids = [1, 2, 3, 4]  # Active marker IDs
 circle_radius = 0.5  # Radius of the circular flight path
-circle_axis = 'Z' # Axis to circle around: 'X' or 'Y' or 'Z'
+circle_axis = 'Z' # Axis to circle around: 'X' or 'Y' or 'Z' or 'XYZ'
 circle_speed_factor = 10  # How fast the Crazyflie should move along circle [degree/s]
 qtm_ip = "128.174.245.190"
 
@@ -101,8 +101,9 @@ with QualisysCrazyflie(
     dt = 0
 
     ## PID Tuning ##############################################################
-    # The following controllers are ordered from the low-level to the high-level
-    # TODO: use cfclient to set all PID gains
+    # The following controllers are ordered from the low-level to high-level
+    # TODO: To set the PID gains, use cfclient (see link below) instead of using the code
+    # https://www.bitcraze.io/documentation/repository/crazyflie-clients-python/master/userguides/userguide_client/tuning_tab/ 
     # 1. Set PID attitude rate gains
     """
     # roll
@@ -254,7 +255,7 @@ with QualisysCrazyflie(
             # Engage
             qcf.safe_position_setpoint(target)
 
-        elif dt < 50:
+        elif dt < 60:
             if circle_axis == 'Z':
                 print(f'[t={int(dt)}] Maneuvering - Circle around Z')
                 # Set target
@@ -276,10 +277,17 @@ with QualisysCrazyflie(
                 target = Pose(world.origin.x, world.origin.y + _y, 1.0 + _z)
                 # Engage
                 qcf.safe_position_setpoint(target)
-            # TODO: circle_axis == 'XYZ'
+            elif circle_axis == 'XYZ':
+                print(f'[t={int(dt)}] Maneuvering - Circle around XYZ')
+                # Set target
+                _, _z = utils.pol2cart(0.4, 5 * phi)
+                _x, _y = utils.pol2cart(circle_radius, phi)
+                target = Pose(world.origin.x + _x, world.origin.y + _y, 1.0 + _z)
+                # Engage
+                qcf.safe_position_setpoint(target)
         
         # Back to center
-        elif dt < 57:
+        elif dt < 67:
             print(f"[t={dt}] Maneuvering - Center...")
             # Set target
             target = Pose(world.origin.x, world.origin.y, 1.0)
@@ -287,8 +295,6 @@ with QualisysCrazyflie(
             qcf.safe_position_setpoint(target)
                 # Move out and circle around Y axis
         else:
-            for logconf in conf_list:
-                logconf.stop()
             break
         
         if time() - last_saved_t > save_freq:
@@ -309,35 +315,10 @@ with QualisysCrazyflie(
         
         if not qcf.is_safe():
             print("not safe")
-        
-        """
-        # Back to center
-        elif dt < 45:
-            print(f'[t={int(dt)}] Maneuvering - Center...')
-            # Set target
-            target = Pose(world.origin.x, world.origin.y, 1.0)
-            # Engage
-            qcf.safe_position_setpoint(target)
 
-        # Move and circle around X axis
-        elif dt < 60:
-            print(f'[t={int(dt)}] Maneuvering - Circle around X...')
-            # Set target
-            _y, _z = utils.pol2cart(circle_radius, phi)
-            target = Pose(world.origin.x,
-                          world.origin.y + _y,
-                          1.0 + _z)
-            # Engage
-            qcf.safe_position_setpoint(target)
-        
-        # Back to center
-        elif dt < 65:
-            print(f'[t={int(dt)}] Maneuvering - Center...')
-            # Set target
-            target = Pose(world.origin.x, world.origin.y, 1.0)
-            # Engage
-            qcf.safe_position_setpoint(target)
-        """
+    # Stop logging data from the flapper firmware
+    for logconf in conf_list:
+        logconf.stop()
 
     # Land
     first_z = qcf.pose.z
@@ -349,6 +330,7 @@ with QualisysCrazyflie(
         cur_time = time()
         target = Pose(world.origin.x, world.origin.y, max(-0.20, first_z * (1 - (cur_time - start_time) / landing_time)))
         qcf.safe_position_setpoint(target)
+
 # Get the current time in seconds since the epoch
 current_time = time()
 
