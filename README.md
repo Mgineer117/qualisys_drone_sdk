@@ -1,3 +1,7 @@
+# Tips
+- Use Crazyradio PA for now?
+- Qualisys codes do not work as they are?
+
 ![qfly | Qualisys Drone SDK](https://qualisys.github.io/qualisys_drone_sdk/qfly_banner.png)
 # Modified Qualysis Drone SDK
 ## Setup
