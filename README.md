@@ -1,7 +1,7 @@
 # Tips
 - Use Crazyradio PA for now
 - Qualisys codes do not work as they are
-- Make sure the Flapper address is not conflicting with other Crazyflies (radio://0/80/2M/E7E7E7E7E7)
+- Make sure the Flapper address is not conflicting with other Crazyflies (```radio://0/80/2M/E7E7E7E7E7```)
 
 ![qfly | Qualisys Drone SDK](https://qualisys.github.io/qualisys_drone_sdk/qfly_banner.png)
 # Modified Qualysis Drone SDK
