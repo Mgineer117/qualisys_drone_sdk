@@ -15,7 +15,7 @@ from functools import partial
 
 # SETTINGS
 cf_body_name = "flapper"  # QTM rigid body name
-cf_uri = "radio://0/80/2M/E7E7E7E701"  # Crazyflie address
+cf_uri = "radio://0/80/2M/E7E7E7E7E7"  # Crazyflie address
 cf_marker_ids = [1, 2, 3, 4]  # Active marker IDs
 circle_radius = 0.5  # Radius of the circular flight path
 circle_speed_factor = 0.12  # How fast the Crazyflie should move along circle
@@ -101,7 +101,7 @@ for group in group_list:
         logconf.add_variable('ctrltarget.vz', 'float')
     if group == "target_attitude":
         logconf.add_variable('ctrltarget.roll', 'float')
-        logconf.add_variable('cctrltarget.pitch', 'float')
+        logconf.add_variable('ctrltarget.pitch', 'float')
         logconf.add_variable('ctrltarget.yaw', 'float')
     if group == "target_attitude_rate":
         logconf.add_variable('controller.rollRate', 'float')

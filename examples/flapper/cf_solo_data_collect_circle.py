@@ -98,7 +98,7 @@ for group in group_list:
         logconf.add_variable('ctrltarget.vz', 'float')
     if group == "target_attitude":
         logconf.add_variable('ctrltarget.roll', 'float')
-        logconf.add_variable('cctrltarget.pitch', 'float')
+        logconf.add_variable('ctrltarget.pitch', 'float')
         logconf.add_variable('ctrltarget.yaw', 'float')
     if group == "target_attitude_rate":
         logconf.add_variable('controller.rollRate', 'float')
