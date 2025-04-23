@@ -103,9 +103,9 @@ for group in group_list:
     #    logconf.add_variable('ctrltarget.pitch', 'float')
     #    logconf.add_variable('ctrltarget.yaw', 'float')
     if group == "controller_cmd":
-        logconf.add_variable('controller.cmd_thrust', 'float') 
+        logconf.add_variable('controller.cmd_thrust', 'float')
         logconf.add_variable('controller.cmd_roll', 'float')
-        logconf.add_variable('controller.cmd_pitch', 'float'
+        logconf.add_variable('controller.cmd_pitch', 'float')
         logconf.add_variable('controller.cmd_yaw', 'float')
     if group == "controller_attitude":
         logconf.add_variable('controller.roll', 'float')
