@@ -24,6 +24,8 @@ circle_axis = 'Z' # Axis to circle around: 'X' or 'Y' or 'Z' or 'XYZ'
 circle_speed_factor = 10  # How fast the Crazyflie should move along circle [degree/s]
 qtm_ip = "128.174.245.190"
 
+sampling_rate = 0.01 # sec
+
 # Watch key presses with a global variable
 last_key_pressed = None
 
@@ -50,9 +52,9 @@ world = World(expanse=1.8, speed_limit=1.1)
 # For details, see https://www.bitcraze.io/documentation/repository/crazyflie-firmware/master/api/logs/ 
 conf_list = []
 group_list = ["stabilizer", "pos", "vel", "acc", "attitude_rate", "motor", "motor_req", "gyro",
-              "target_pos", "target_vel", "target_attitude", "target_attitude_rate", "controller_cmd", "controller"]
+              "target_pos", "target_vel", "target_attitude", "target_attitude_rate", "controller_attitude", "controller_attitude_rate"]
 for group in group_list:
-    logconf = LogConfig(name=group, period_in_ms=100)
+    logconf = LogConfig(name=group, period_in_ms=sampling_rate*1000)
     if group == "stabilizer":
         logconf.add_variable('stabilizer.roll', 'float') # Same as stateEstimate.roll
         logconf.add_variable('stabilizer.pitch', 'float') # Same as stateEstimate.pitch
@@ -104,15 +106,19 @@ for group in group_list:
         logconf.add_variable('controller.rollRate', 'float')
         logconf.add_variable('controller.pitchRate', 'float')
         logconf.add_variable('controller.yawRate', 'float')
-    if group == "controller_cmd":
-        logconf.add_variable('controller.cmd_thrust', 'float') 
-        logconf.add_variable('controller.cmd_roll', 'float') # TODO: same as controller.roll and ctrltarget.roll?
-        logconf.add_variable('controller.cmd_pitch', 'float') # TODO: same as controller.pitch and ctrltarget.pitch?
-        logconf.add_variable('controller.cmd_yaw', 'float') # TODO: same as controller.yaw and ctrltarget.yaw?
-    if group == "controller":
-        logconf.add_variable('controller.roll', 'float') # TODO: same as controller.roll and ctrltarget.roll?
-        logconf.add_variable('controller.pitch', 'float') # TODO: same as controller.pitch and ctrltarget.pitch?
-        logconf.add_variable('controller.yaw', 'float') # TODO: same as controller.yaw and ctrltarget.yaw?
+    #if group == "controller_cmd":
+    #    logconf.add_variable('controller.cmd_thrust', 'float') 
+    #    logconf.add_variable('controller.cmd_roll', 'float') # TODO: same as controller.roll and ctrltarget.roll?
+    #    logconf.add_variable('controller.cmd_pitch', 'float') # TODO: same as controller.pitch and ctrltarget.pitch?
+    #    logconf.add_variable('controller.cmd_yaw', 'float') # TODO: same as controller.yaw and ctrltarget.yaw?
+    if group == "controller_attitude":
+        logconf.add_variable('controller.roll', 'float')
+        logconf.add_variable('controller.pitch', 'float')
+        logconf.add_variable('controller.yaw', 'float')
+    if group == "controller_attitude_rate":
+        logconf.add_variable('controller.rollRate', 'float')
+        logconf.add_variable('controller.pitchRate', 'float')
+        logconf.add_variable('controller.yawRate', 'float')
     conf_list.append(logconf)
 
 # Prepare for liftoff
@@ -123,7 +129,7 @@ with QualisysCrazyflie(
     # Let there be time
     t = time()
     last_saved_t = time()
-    save_freq = 0.01
+    save_freq = sampling_rate
     dt = 0
 
     ## PID Controllers ##############################################################
