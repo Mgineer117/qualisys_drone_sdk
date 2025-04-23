@@ -50,7 +50,7 @@ world = World(expanse=1.8, speed_limit=1.1)
 # For details, see https://www.bitcraze.io/documentation/repository/crazyflie-firmware/master/api/logs/ 
 conf_list = []
 group_list = ["stabilizer", "pos", "vel", "acc", "attitude_rate", "motor", "motor_req", "gyro",
-              "target_pos", "target_vel", "target_attitude", "target_attitude_rate", "controller_cmd"]
+              "target_pos", "target_vel", "target_attitude", "target_attitude_rate", "controller_cmd", "controller"]
 for group in group_list:
     logconf = LogConfig(name=group, period_in_ms=100)
     if group == "stabilizer":
@@ -109,6 +109,10 @@ for group in group_list:
         logconf.add_variable('controller.cmd_roll', 'float') # TODO: same as controller.roll and ctrltarget.roll?
         logconf.add_variable('controller.cmd_pitch', 'float') # TODO: same as controller.pitch and ctrltarget.pitch?
         logconf.add_variable('controller.cmd_yaw', 'float') # TODO: same as controller.yaw and ctrltarget.yaw?
+    if group == "controller":
+        logconf.add_variable('controller.roll', 'float') # TODO: same as controller.roll and ctrltarget.roll?
+        logconf.add_variable('controller.pitch', 'float') # TODO: same as controller.pitch and ctrltarget.pitch?
+        logconf.add_variable('controller.yaw', 'float') # TODO: same as controller.yaw and ctrltarget.yaw?
     conf_list.append(logconf)
 
 # Prepare for liftoff
