@@ -53,7 +53,7 @@ world = World()
 # For details, see https://www.bitcraze.io/documentation/repository/crazyflie-firmware/master/api/logs/ 
 conf_list = []
 group_list = ["stabilizer", "pos", "vel", "acc", "attitude_rate", "motor", "motor_req", "gyro",
-              "target_pos", "target_vel", "target_attitude", "controller_cmd", "controller_attitude", "controller_attitude_rate"]
+              "target_pos", "target_vel", "controller_cmd", "controller_attitude", "controller_attitude_rate"]
 for group in group_list:
     logconf = LogConfig(name=group, period_in_ms=sampling_rate*1000)
     if group == "stabilizer":
@@ -99,15 +99,15 @@ for group in group_list:
         logconf.add_variable('ctrltarget.vx', 'float')
         logconf.add_variable('ctrltarget.vy', 'float')
         logconf.add_variable('ctrltarget.vz', 'float')
-    if group == "target_attitude":
-        logconf.add_variable('ctrltarget.roll', 'float')
-        logconf.add_variable('ctrltarget.pitch', 'float')
-        logconf.add_variable('ctrltarget.yaw', 'float')
-    #if group == "controller_cmd":
-    #    logconf.add_variable('controller.cmd_thrust', 'float') 
-    #    logconf.add_variable('controller.cmd_roll', 'float') # TODO: same as controller.roll and ctrltarget.roll?
-    #    logconf.add_variable('controller.cmd_pitch', 'float') # TODO: same as controller.pitch and ctrltarget.pitch?
-    #    logconf.add_variable('controller.cmd_yaw', 'float') # TODO: same as controller.yaw and ctrltarget.yaw?
+    #if group == "target_attitude":
+    #    logconf.add_variable('ctrltarget.roll', 'float')
+    #    logconf.add_variable('ctrltarget.pitch', 'float')
+    #    logconf.add_variable('ctrltarget.yaw', 'float')
+    if group == "controller_cmd":
+        logconf.add_variable('controller.cmd_thrust', 'float') 
+        logconf.add_variable('controller.cmd_roll', 'float')
+        logconf.add_variable('controller.cmd_pitch', 'float')
+        logconf.add_variable('controller.cmd_yaw', 'float')
     if group == "controller_attitude":
         logconf.add_variable('controller.roll', 'float')
         logconf.add_variable('controller.pitch', 'float')
