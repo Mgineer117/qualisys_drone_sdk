@@ -19,9 +19,9 @@ from functools import partial
 cf_body_name = "flapper"  # QTM rigid body name
 cf_uri = "radio://0/80/2M/E7E7E7E7E7"  # Crazyflie address
 cf_marker_ids = [1, 2, 3, 4]  # Active marker IDs
-circle_radius = 0.8  # Radius of the circular flight path
+circle_radius = 0.75  # Radius of the circular flight path
 circle_axis = 'Z' # Axis to circle around: 'X' or 'Y' or 'Z' or 'XYZ'
-circle_speed_factor = 15  # How fast the Crazyflie should move along circle [degree/s]
+circle_speed_factor = 13  # How fast the Crazyflie should move along circle [degree/s]
 qtm_ip = "128.174.245.190"
 
 sampling_rate = 0.1 # sec
