@@ -19,9 +19,9 @@ from functools import partial
 cf_body_name = "flapper"  # QTM rigid body name
 cf_uri = "radio://0/80/2M/E7E7E7E7E7"  # Crazyflie address
 cf_marker_ids = [1, 2, 3, 4]  # Active marker IDs
-circle_radius = 0.6  # Radius of the circular flight path
-circle_axis = 'Z' # Axis to circle around: 'X' or 'Y' or 'Z' or 'XYZ'
-circle_speed_factor = 12  # How fast the Crazyflie should move along circle [degree/s]
+circle_radius = 0.75  # Radius of the circular flight path
+circle_axis = 'XYZ' # Axis to circle around: 'X' or 'Y' or 'Z' or 'XYZ'
+circle_speed_factor = 9  # How fast the Crazyflie should move along circle [degree/s]
 qtm_ip = "128.174.245.190"
 
 sampling_rate = 0.1 # sec
@@ -295,22 +295,22 @@ with QualisysCrazyflie(
                 print(f'[t={int(dt)}] Maneuvering - Circle around Y')
                 # Set target
                 _x, _z = utils.pol2cart(circle_radius, phi)
-                target = Pose(world.origin.x + _x, world.origin.y, 1.0 + _z)
+                target = Pose(world.origin.x + _x, world.origin.y, 0.95 + _z, yaw = 0)
                 # Engage
                 qcf.safe_position_setpoint(target)
             elif circle_axis == 'X':
                 print(f'[t={int(dt)}] Maneuvering - Circle around X')
                 # Set target
                 _y, _z = utils.pol2cart(circle_radius, phi)
-                target = Pose(world.origin.x, world.origin.y + _y, 1.0 + _z)
+                target = Pose(world.origin.x, world.origin.y + _y, 0.8 + _z, yaw = 0)
                 # Engage
                 qcf.safe_position_setpoint(target)
             elif circle_axis == 'XYZ':
                 print(f'[t={int(dt)}] Maneuvering - Circle around XYZ')
                 # Set target
-                _, _z = utils.pol2cart(0.4, 5 * phi)
+                _, _z = utils.pol2cart(0.3, 4 * phi)
                 _x, _y = utils.pol2cart(circle_radius, phi)
-                target = Pose(world.origin.x + _x, world.origin.y + _y, 1.0 + _z)
+                target = Pose(world.origin.x + _x, world.origin.y + _y, 0.8 + _z, yaw = 90 + phi)
                 # Engage
                 qcf.safe_position_setpoint(target)
         
