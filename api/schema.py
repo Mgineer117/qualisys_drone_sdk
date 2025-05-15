@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import List
 
 from pydantic import BaseModel, ConfigDict
@@ -17,7 +18,7 @@ class TargetRequest(BaseModel):
     rot_mat: List[List[float]]
 
 
-class ControlStatus(str):
+class ControlStatus(str, Enum):
     OK = "OK"
     ERROR = "ERROR"
 
