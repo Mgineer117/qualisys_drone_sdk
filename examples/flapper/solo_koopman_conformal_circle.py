@@ -31,6 +31,23 @@ listener = pynput.keyboard.Listener(on_press=on_press)
 listener.start()
 
 world = World(expanse=1.8, speed_limit=1.1)
+# preflight check
+target, status = get_target_position(
+    0,
+    circle_axis,
+    circle_radius,
+    circle_speed_factor,
+    world.origin.x,
+    world.origin.y,
+    world.origin.z,
+    world.origin.x,
+    world.origin.y,
+    world.origin.z,
+    [[1, 0, 0], [0, 1, 0], [0, 0, 1]],
+)
+if status != "OK":
+    print(f"Error: {status}")
+    exit(1)
 
 with QualisysCrazyflie(
     cf_body_name, cf_uri, world, marker_ids=cf_marker_ids, qtm_ip=qtm_ip
