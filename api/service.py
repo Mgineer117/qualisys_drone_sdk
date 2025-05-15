@@ -35,11 +35,11 @@ def get_target_position(
         z_cur=z_cur,
         rot_mat=rot_mat,
     )
-    resp = requests.post(f"{SERVER_URL}/compute_target", json=req.dict())
+    resp = requests.post(f"{SERVER_URL}/compute_target", json=req.model_dump())
     resp.raise_for_status()
     data = TargetResponse(**resp.json())
 
-    if data.status != TargetResponse.ControlStatus.OK:
+    if data.status != TargetResponse.status.OK:
         return Pose(x_cur, y_cur, z_cur, yaw=0.0), data.status
     else:
         return Pose(data.x, data.y, data.z, yaw=data.yaw), data.status
