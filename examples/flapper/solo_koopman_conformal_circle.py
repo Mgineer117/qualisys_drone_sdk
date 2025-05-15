@@ -6,6 +6,7 @@ from time import time
 
 import pynput
 
+from api.schema import TargetRequest
 from api.service import get_target_position
 from qfly import Pose, QualisysCrazyflie, World
 
@@ -32,19 +33,20 @@ listener.start()
 
 world = World(expanse=1.8, speed_limit=1.1)
 # preflight check
-target, status = get_target_position(
-    0,
-    circle_axis,
-    circle_radius,
-    circle_speed_factor,
-    world.origin.x,
-    world.origin.y,
-    world.origin.z,
-    world.origin.x,
-    world.origin.y,
-    world.origin.z,
-    [[1, 0, 0], [0, 1, 0], [0, 0, 1]],
+req = TargetRequest(
+    dt=0,
+    axis=circle_axis,
+    radius=circle_radius,
+    speed=circle_speed_factor,
+    origin_x=world.origin.x,
+    origin_y=world.origin.y,
+    origin_z=world.origin.z,
+    x_cur=world.origin.x,
+    y_cur=world.origin.y,
+    z_cur=world.origin.z,
+    rot_mat=[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]],
 )
+target, status = get_target_position(req)
 if status != "OK":
     print(f"Error: {status}")
     exit(1)
@@ -65,19 +67,20 @@ with QualisysCrazyflie(
             target = Pose(world.origin.x, world.origin.y, 1.0)
         elif dt < 20:
             # fetch from remote service
-            target, status = get_target_position(
-                dt,
-                circle_axis,
-                circle_radius,
-                circle_speed_factor,
-                world.origin.x,
-                world.origin.y,
-                world.origin.z,
-                qcf.pose.x,
-                qcf.pose.y,
-                qcf.pose.z,
-                qcf.pose.rot_mat,
+            req = TargetRequest(
+                dt=dt,
+                axis=circle_axis,
+                radius=circle_radius,
+                speed=circle_speed_factor,
+                origin_x=world.origin.x,
+                origin_y=world.origin.y,
+                origin_z=world.origin.z,
+                x_cur=qcf.pose.x,
+                y_cur=qcf.pose.y,
+                z_cur=qcf.pose.z,
+                rot_mat=qcf.pose.rot_mat.tolist(),
             )
+            target, status = get_target_position(req)
             if status != "OK":
                 print(f"Error: {status}")
                 break
