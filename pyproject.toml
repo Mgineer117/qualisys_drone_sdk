@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "cflib>=0.1.28",
+    "omegaconf>=2.3.0",
     "pydantic>=2.11.4",
     "pynput>=1.8.1",
     "qtm>=2.1.2",
