@@ -6,11 +6,9 @@ import argparse
 from time import time
 
 import numpy as np
-import pynput
 from omegaconf import OmegaConf
 from pydantic import BaseModel
 
-from api.schema import TargetRequest
 from api.schema import TargetRequest
 from api.service import get_target_position
 from qfly import Pose, QualisysCrazyflie, World
@@ -31,7 +29,7 @@ class FlapperConfig(BaseModel):
 
 
 def calc_target(config: FlapperConfig, t: float):
-    theta += config.omega * t / 180 * np.pi
+    theta = config.omega * t / 180 * np.pi
     if config.trajectory_type == "XZ":
         target_x = 0.5 * np.cos(theta)
         target_y = 0.0
