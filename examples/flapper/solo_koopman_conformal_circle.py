@@ -11,6 +11,7 @@ from omegaconf import OmegaConf
 from pydantic import BaseModel
 
 from api.schema import TargetRequest
+from api.schema import TargetRequest
 from api.service import get_target_position
 from qfly import Pose, QualisysCrazyflie, World
 
