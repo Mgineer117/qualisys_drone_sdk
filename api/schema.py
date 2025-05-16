@@ -5,17 +5,13 @@ from pydantic import BaseModel, ConfigDict
 
 
 class TargetRequest(BaseModel):
-    dt: float
-    axis: str
-    radius: float
-    speed: float
-    origin_x: float
-    origin_y: float
-    origin_z: float
-    x_cur: float
-    y_cur: float
-    z_cur: float
-    rot_mat: List[List[float]]
+    target_x: float
+    target_y: float
+    target_z: float
+    cur_x: float
+    cur_y: float
+    cur_z: float
+    rot_mat: List[List[float]]  # 3x3行列
 
 
 class ControlStatus(str, Enum):
