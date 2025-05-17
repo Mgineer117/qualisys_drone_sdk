@@ -3,6 +3,7 @@ Updated Crazyflie circular trajectory using remote target computation API
 """
 
 import argparse
+import json
 from time import time
 
 import numpy as np
@@ -14,7 +15,7 @@ from api.service import get_target_position
 from qfly import Pose, QualisysCrazyflie, World
 
 # SETTINGS
-cf_body_name = "flapper"
+cf_body_name = "flapper2"
 cf_uri = "radio://0/80/2M/E7E7E7E7E7"
 cf_marker_ids = [1, 2, 3, 4]
 qtm_ip = "128.174.245.190"
@@ -33,19 +34,23 @@ def calc_target(config: FlapperConfig, t: float):
     if config.trajectory_type == "XZ":
         target_x = 0.5 * np.cos(theta)
         target_y = 0.0
-        target_z = 0.5 * np.sin(theta) + 1.0
+        target_z = 0.5 * np.sin(theta) + 1.00
+    elif config.trajectory_type == "YZ":
+        target_x = 0.0
+        target_y = 0.5 * np.cos(theta)
+        target_z = 0.5 * np.sin(theta) + 1.00
     elif config.trajectory_type == "XY":
-        target_x = 2 * np.cos(theta)
-        target_y = 2 * np.sin(theta)
-        target_z = 1.0
+        target_x = np.cos(theta)
+        target_y = np.sin(theta)
+        target_z = 1.00
     elif config.trajectory_type == "XYZ":
-        target_x = 2 * np.cos(theta)
-        target_y = 2 * np.sin(theta)
-        target_z = config.radius * np.sin(theta) + 1.0
+        target_x = np.cos(theta)
+        target_y = np.sin(theta)
+        target_z = 0.5 * np.sin(theta) + 1.00
     elif config.trajectory_type == "XY2Z":
-        target_x = 2 * np.cos(theta)
-        target_y = 2 * np.sin(theta)
-        target_z = 0.5 * np.sin(2 * theta) + 1.0
+        target_x = np.cos(theta)
+        target_y = np.sin(theta)
+        target_z = 0.30 * np.sin(2 * theta) + 1.00
     return target_x, target_y, target_z
 
 
@@ -77,29 +82,54 @@ def main(config):
         while qcf.is_safe():
             t = time() - t0
 
-            if t < config.takeoff_step:
+            if t < config.takeoff_sec:
                 target = Pose(world.origin.x, world.origin.y, 1.0)
-            elif t < 20:
+            elif t < config.takeoff_sec + config.tracking_sec:
                 # fetch from remote service
-                target_x, target_y, target_z = calc_target(config, t)
+                target_x, target_y, target_z = calc_target(
+                    config, t - config.takeoff_sec
+                )
                 req = TargetRequest(
-                    target_x=target_x,
-                    target_y=target_y,
-                    target_z=target_z,
-                    cur_x=qcf.pose.x,
-                    cur_y=qcf.pose.y,
-                    cur_z=qcf.pose.z,
-                    rot_mat=qcf.rot_mat.tolist(),
+                    target_x=target_x + world.origin.x,
+                    target_y=target_y + world.origin.y,
+                    target_z=target_z + world.origin.z,
+                    cur_x=qcf.pose.x - world.origin.x,
+                    cur_y=qcf.pose.y - world.origin.y,
+                    cur_z=qcf.pose.z - world.origin.z,
+                    rot_mat=qcf.pose.rotmatrix,
                 )
                 target, status = get_target_position(req)
                 if status != "OK":
                     print(f"Error: {status}")
                     break
+                if qcf.pose.z > 2.5:
+                    break
+            else:
+                break
             qcf.safe_position_setpoint(target)
             # log data
-            data["pose"].append([qcf.pose.x, qcf.pose.y, qcf.pose.z])
+            print(f"[t={t}] Pose - {qcf.pose}")
+            print(f"[t={t}] Target - {target}")
+
+            data["pose"].append(
+                [
+                    qcf.pose.x - world.origin.x,
+                    qcf.pose.y - world.origin.y,
+                    qcf.pose.z - world.origin.z,
+                ]
+            )
             data["time"].append(t)
-            data["control"].append([target.x, target.y, target.z])
+            data["control"].append(
+                [
+                    target.x - world.origin.x,
+                    target.y - world.origin.y,
+                    target.z - world.origin.z,
+                ]
+            )
+
+            # Open a file in write mode and use json.dump() to write the dictionary to the file
+            with open("koopman_data.json", "w") as file:
+                json.dump(data, file, indent=4)
         # Land
         first_z = qcf.pose.z
         landing_time = 5
@@ -111,7 +141,7 @@ def main(config):
                 target = Pose(world.origin.x, world.origin.y, 1.0)
                 # Engage
                 qcf.safe_position_setpoint(target)
-            elif qcf.pose.z > 0.40:
+            elif qcf.pose.z - world.origin.z > 0.40:
                 print(qcf.pose.z)
                 print("landing...")
                 cur_time = time()

@@ -22,7 +22,7 @@ cf_marker_ids = [1, 2, 3, 4]  # Active marker IDs
 circle_radius = 0.5  # Radius of the circular flight path
 circle_speed_factor = 0.12  # How fast the Crazyflie should move along circle
 qtm_ip = "128.174.245.190"
-
+sampling_rate = 0.1  # Hz
 last_saved_t = time()
 save_freq = 0.1
 # Watch key presses with a global variable
