@@ -190,7 +190,9 @@ roll_rate_deriv = np.gradient(state_roll, dt)
 pitch_rate_deriv = np.gradient(state_pitch, dt)
 yaw_rate_deriv = np.gradient(np.unwrap(2 * state_yaw) / 2, dt)
 
+# NOTE: [roll_dot, pitch_dot, yaw_dot]^T =  R @ [gyro_x, -gyro_y, gyro_z]^T
 attitude_rate_trans = np.zeros((state_roll.shape[0], 3))
+omega_trans = np.zeros((state_roll.shape[0], 3))
 for i in range(state_roll.shape[0]):
     roll_ = state_roll[i]
     pitch_ = state_pitch[i]
@@ -201,15 +203,28 @@ for i in range(state_roll.shape[0]):
     ])
     omega = np.array([gyro_x[i], -gyro_y[i], gyro_z[i]])
     attitude_rate_trans[i,:] = R_hat @ omega
+    omega_trans[i,:] = np.linalg.inv(R_hat) @ [roll_rate_deriv[i], pitch_rate_deriv[i], yaw_rate_deriv[i]]
 
 fig, axs = plt.subplots(3, 1, figsize=(8, 12))
-axs[0].plot(roll_rate_deriv, label='roll rate deriv')
-axs[0].plot(attitude_rate_trans[:,0], label='roll rate trans')
+axs[0].plot(gyro_x, label='gyro_x')
+axs[0].plot(omega_trans[:,0], label='omega_x_trans')
 axs[0].legend()
-axs[1].plot(pitch_rate_deriv, label='pitch rate deriv')
-axs[1].plot(attitude_rate_trans[:,1], label='pitch rate trans')
+axs[1].plot(-gyro_y, label='-gyro_y')
+axs[1].plot(omega_trans[:,1], label='omega_y_trans')
 axs[1].legend()
-axs[2].plot(yaw_rate_deriv, label='yaw rate deriv')
+axs[2].plot(gyro_z, label='gyro_z')
+axs[2].plot(omega_trans[:,2], label='omega_z_trans')
+axs[2].legend()
+plt.show()
+
+fig, axs = plt.subplots(3, 1, figsize=(8, 12))
+axs[0].plot(attitude_rate_trans[:,0], label='roll rate trans')
+axs[0].plot(roll_rate_deriv, label='roll rate deriv')
+axs[0].legend()
+axs[1].plot(attitude_rate_trans[:,1], label='pitch rate trans')
+axs[1].plot(pitch_rate_deriv, label='pitch rate deriv')
+axs[1].legend()
 axs[2].plot(attitude_rate_trans[:,2], label='yaw rate trans')
+axs[2].plot(yaw_rate_deriv, label='yaw rate deriv')
 axs[2].legend()
 plt.show()
