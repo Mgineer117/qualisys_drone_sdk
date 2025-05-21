@@ -212,7 +212,14 @@ with QualisysCrazyflie(
         # Mind the clock
         dt = time() - t
         
-        if dt > 40:
+        if dt < 40:
+            print(f"[t={dt}]")
+            # Set target
+            _x, _y = utils.pol2cart(circle_radius, 0.0)
+            target = Pose(
+                world.origin.x + _x, world.origin.y + _y, 1.0, yaw=90.0
+            )
+        else:
             break
     
     # Stop logging data from the flapper firmware
