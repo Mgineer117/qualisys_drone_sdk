@@ -1,0 +1,3455 @@
+{
+    "pid_gains": {
+        "pid_rate": {
+            "roll_kp": "50.0",
+            "roll_ki": "0.0",
+            "roll_kd": "0.0",
+            "pitch_kp": "50.0",
+            "pitch_ki": "0.0",
+            "pitch_kd": "0.0",
+            "yaw_kp": "80.0",
+            "yaw_ki": "0.0",
+            "yaw_kd": "0.0"
+        },
+        "pid_attitude": {
+            "roll_kp": "10.0",
+            "roll_ki": "0.0",
+            "roll_kd": "0.20000000298023224",
+            "pitch_kp": "13.0",
+            "pitch_ki": "0.0",
+            "pitch_kd": "1.0",
+            "yaw_kp": "8.0",
+            "yaw_ki": "0.0",
+            "yaw_kd": "0.3499999940395355"
+        },
+        "velCtlPid": {
+            "vxKp": "15.0",
+            "vxKi": "1.0",
+            "vxKd": "0.0",
+            "vyKp": "10.0",
+            "vyKi": "1.0",
+            "vyKd": "0.0",
+            "vzKp": "12.5",
+            "vzKi": "0.5",
+            "vzKd": "0.0"
+        },
+        "posCtlPid": {
+            "xKp": "1.5",
+            "xKi": "0.0",
+            "xKd": "0.0",
+            "yKp": "1.5",
+            "yKi": "0.0",
+            "yKd": "0.0",
+            "zKp": "5.0",
+            "zKi": "0.5",
+            "zKd": "0.0"
+        }
+    },
+    "stabilizer": [
+        {
+            "stabilizer.roll": -0.1314661204814911,
+            "stabilizer.pitch": -0.26386478543281555,
+            "stabilizer.yaw": -0.054906152188777924,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": -0.13476571440696716,
+            "stabilizer.pitch": -0.2526206970214844,
+            "stabilizer.yaw": -0.0507323257625103,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": -0.11119940876960754,
+            "stabilizer.pitch": -0.2965560555458069,
+            "stabilizer.yaw": -0.04829377681016922,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": -0.0738113522529602,
+            "stabilizer.pitch": -0.3752080798149109,
+            "stabilizer.yaw": -0.0449615977704525,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": -0.03402988612651825,
+            "stabilizer.pitch": -0.45728999376296997,
+            "stabilizer.yaw": -0.04400871321558952,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": -0.01888788864016533,
+            "stabilizer.pitch": -0.4966678023338318,
+            "stabilizer.yaw": -0.03715140372514725,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": -0.0021349939052015543,
+            "stabilizer.pitch": -0.5294149518013,
+            "stabilizer.yaw": -0.04049897938966751,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.009685441851615906,
+            "stabilizer.pitch": -0.5549108982086182,
+            "stabilizer.yaw": -0.03669416159391403,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.029343951493501663,
+            "stabilizer.pitch": -0.5917033553123474,
+            "stabilizer.yaw": -0.03565363958477974,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.04043235629796982,
+            "stabilizer.pitch": -0.6142163276672363,
+            "stabilizer.yaw": -0.037082817405462265,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.04633408412337303,
+            "stabilizer.pitch": -0.62419593334198,
+            "stabilizer.yaw": -0.03298274800181389,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.0467928871512413,
+            "stabilizer.pitch": -0.625777542591095,
+            "stabilizer.yaw": -0.030307818204164505,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.04599751532077789,
+            "stabilizer.pitch": -0.6170608997344971,
+            "stabilizer.yaw": -0.032549433410167694,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.03757889196276665,
+            "stabilizer.pitch": -0.6107172966003418,
+            "stabilizer.yaw": -0.030464453622698784,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.030778978019952774,
+            "stabilizer.pitch": -0.6039867401123047,
+            "stabilizer.yaw": -0.028374962508678436,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.025109808892011642,
+            "stabilizer.pitch": -0.5982668995857239,
+            "stabilizer.yaw": -0.029879648238420486,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.021035272628068924,
+            "stabilizer.pitch": -0.5914889574050903,
+            "stabilizer.yaw": -0.026464881375432014,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.01611575111746788,
+            "stabilizer.pitch": -0.5805069804191589,
+            "stabilizer.yaw": -0.027710843831300735,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.012478993274271488,
+            "stabilizer.pitch": -0.5678644180297852,
+            "stabilizer.yaw": -0.024161649867892265,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.007905127480626106,
+            "stabilizer.pitch": -0.5533280968666077,
+            "stabilizer.yaw": -0.023001808673143387,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.0003516524448059499,
+            "stabilizer.pitch": -0.54765385389328,
+            "stabilizer.yaw": -0.01906164363026619,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.013387265615165234,
+            "stabilizer.pitch": -0.5707004070281982,
+            "stabilizer.yaw": -0.014547011815011501,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.016661997884511948,
+            "stabilizer.pitch": -0.5757828950881958,
+            "stabilizer.yaw": -0.014722258783876896,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.017399441450834274,
+            "stabilizer.pitch": -0.5729024410247803,
+            "stabilizer.yaw": -0.01759427599608898,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.016602441668510437,
+            "stabilizer.pitch": -0.5450464487075806,
+            "stabilizer.yaw": -0.02128688246011734,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.017138393595814705,
+            "stabilizer.pitch": -0.5472222566604614,
+            "stabilizer.yaw": -0.018744681030511856,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.010716263204813004,
+            "stabilizer.pitch": -0.5354800224304199,
+            "stabilizer.yaw": -0.02523353323340416,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.010655667632818222,
+            "stabilizer.pitch": -0.5257645845413208,
+            "stabilizer.yaw": -0.026758743450045586,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.041916266083717346,
+            "stabilizer.pitch": -0.5576299428939819,
+            "stabilizer.yaw": -0.038469962775707245,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.033734485507011414,
+            "stabilizer.pitch": -0.559167206287384,
+            "stabilizer.yaw": -0.036730069667100906,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.026997823268175125,
+            "stabilizer.pitch": -0.5784502625465393,
+            "stabilizer.yaw": -0.054480329155921936,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.015498639084398746,
+            "stabilizer.pitch": -0.5558029413223267,
+            "stabilizer.yaw": -0.043980177491903305,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.025261061266064644,
+            "stabilizer.pitch": -0.5677228569984436,
+            "stabilizer.yaw": -0.04002779722213745,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.02811536192893982,
+            "stabilizer.pitch": -0.5899947285652161,
+            "stabilizer.yaw": -0.04054917395114899,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.021633783355355263,
+            "stabilizer.pitch": -0.5846766233444214,
+            "stabilizer.yaw": -0.03897041082382202,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.01657833158969879,
+            "stabilizer.pitch": -0.5777756571769714,
+            "stabilizer.yaw": -0.03994106128811836,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.011050732806324959,
+            "stabilizer.pitch": -0.5726403594017029,
+            "stabilizer.yaw": -0.040583010762929916,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.010186746716499329,
+            "stabilizer.pitch": -0.5630018711090088,
+            "stabilizer.yaw": -0.047846339643001556,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.015657629817724228,
+            "stabilizer.pitch": -0.5646845698356628,
+            "stabilizer.yaw": -0.05325279384851456,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.019596993923187256,
+            "stabilizer.pitch": -0.5778589248657227,
+            "stabilizer.yaw": -0.05646061524748802,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.01979280449450016,
+            "stabilizer.pitch": -0.5739672780036926,
+            "stabilizer.yaw": -0.05629757046699524,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.034294359385967255,
+            "stabilizer.pitch": -0.5895938873291016,
+            "stabilizer.yaw": -0.06016908586025238,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.029817599803209305,
+            "stabilizer.pitch": -0.5798792243003845,
+            "stabilizer.yaw": -0.06802380084991455,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.03868798539042473,
+            "stabilizer.pitch": -0.586760401725769,
+            "stabilizer.yaw": -0.06826656311750412,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.05160730704665184,
+            "stabilizer.pitch": -0.59498131275177,
+            "stabilizer.yaw": -0.06421734392642975,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.036270078271627426,
+            "stabilizer.pitch": -0.5744902491569519,
+            "stabilizer.yaw": -0.06026739254593849,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.03587731346487999,
+            "stabilizer.pitch": -0.5632787346839905,
+            "stabilizer.yaw": -0.06210535764694214,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.014826190657913685,
+            "stabilizer.pitch": -0.5322314500808716,
+            "stabilizer.yaw": -0.07110244035720825,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.01043643057346344,
+            "stabilizer.pitch": -0.5181442499160767,
+            "stabilizer.yaw": -0.07512848824262619,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.005377014167606831,
+            "stabilizer.pitch": -0.5137419104576111,
+            "stabilizer.yaw": -0.07222887128591537,
+            "stabilizer.thrust": 0.0
+        },
+        {
+            "stabilizer.roll": 0.008351340889930725,
+            "stabilizer.pitch": -0.5223961472511292,
+            "stabilizer.yaw": -0.06882911920547485,
+            "stabilizer.thrust": 0.0
+        }
+    ],
+    "pos": [
+        {
+            "stateEstimate.x": 0.24769183993339539,
+            "stateEstimate.y": 0.11563993245363235,
+            "stateEstimate.z": 0.1440364122390747
+        },
+        {
+            "stateEstimate.x": 0.24649614095687866,
+            "stateEstimate.y": 0.11622915416955948,
+            "stateEstimate.z": 0.14375115931034088
+        },
+        {
+            "stateEstimate.x": 0.24783529341220856,
+            "stateEstimate.y": 0.11552096158266068,
+            "stateEstimate.z": 0.14416179060935974
+        },
+        {
+            "stateEstimate.x": 0.2473229616880417,
+            "stateEstimate.y": 0.11576284468173981,
+            "stateEstimate.z": 0.14394177496433258
+        },
+        {
+            "stateEstimate.x": 0.2506409287452698,
+            "stateEstimate.y": 0.11405234783887863,
+            "stateEstimate.z": 0.14470288157463074
+        },
+        {
+            "stateEstimate.x": 0.25125741958618164,
+            "stateEstimate.y": 0.11378078907728195,
+            "stateEstimate.z": 0.144657701253891
+        },
+        {
+            "stateEstimate.x": 0.2516590356826782,
+            "stateEstimate.y": 0.11361373215913773,
+            "stateEstimate.z": 0.14462526142597198
+        },
+        {
+            "stateEstimate.x": 0.25151219964027405,
+            "stateEstimate.y": 0.11379173398017883,
+            "stateEstimate.z": 0.1443481594324112
+        },
+        {
+            "stateEstimate.x": 0.25221842527389526,
+            "stateEstimate.y": 0.11342176049947739,
+            "stateEstimate.z": 0.14460021257400513
+        },
+        {
+            "stateEstimate.x": 0.25270211696624756,
+            "stateEstimate.y": 0.11311738193035126,
+            "stateEstimate.z": 0.14473718404769897
+        },
+        {
+            "stateEstimate.x": 0.2528800070285797,
+            "stateEstimate.y": 0.11299287527799606,
+            "stateEstimate.z": 0.1447358876466751
+        },
+        {
+            "stateEstimate.x": 0.25314241647720337,
+            "stateEstimate.y": 0.11280176788568497,
+            "stateEstimate.z": 0.1448720395565033
+        },
+        {
+            "stateEstimate.x": 0.2532259523868561,
+            "stateEstimate.y": 0.11276748031377792,
+            "stateEstimate.z": 0.14489097893238068
+        },
+        {
+            "stateEstimate.x": 0.25334522128105164,
+            "stateEstimate.y": 0.11272212862968445,
+            "stateEstimate.z": 0.144928440451622
+        },
+        {
+            "stateEstimate.x": 0.25332802534103394,
+            "stateEstimate.y": 0.11278900504112244,
+            "stateEstimate.z": 0.14482812583446503
+        },
+        {
+            "stateEstimate.x": 0.25317832827568054,
+            "stateEstimate.y": 0.11293522268533707,
+            "stateEstimate.z": 0.14457738399505615
+        },
+        {
+            "stateEstimate.x": 0.25309669971466064,
+            "stateEstimate.y": 0.11301293224096298,
+            "stateEstimate.z": 0.14443697035312653
+        },
+        {
+            "stateEstimate.x": 0.25314298272132874,
+            "stateEstimate.y": 0.11299897730350494,
+            "stateEstimate.z": 0.14449182152748108
+        },
+        {
+            "stateEstimate.x": 0.2530938982963562,
+            "stateEstimate.y": 0.113042913377285,
+            "stateEstimate.z": 0.1445007026195526
+        },
+        {
+            "stateEstimate.x": 0.2527920603752136,
+            "stateEstimate.y": 0.1132488027215004,
+            "stateEstimate.z": 0.14441712200641632
+        },
+        {
+            "stateEstimate.x": 0.25271061062812805,
+            "stateEstimate.y": 0.11332385987043381,
+            "stateEstimate.z": 0.14453530311584473
+        },
+        {
+            "stateEstimate.x": 0.2525636851787567,
+            "stateEstimate.y": 0.11345843225717545,
+            "stateEstimate.z": 0.14450377225875854
+        },
+        {
+            "stateEstimate.x": 0.25261685252189636,
+            "stateEstimate.y": 0.11343228816986084,
+            "stateEstimate.z": 0.14457231760025024
+        },
+        {
+            "stateEstimate.x": 0.2530486285686493,
+            "stateEstimate.y": 0.11313281953334808,
+            "stateEstimate.z": 0.14487268030643463
+        },
+        {
+            "stateEstimate.x": 0.2529604136943817,
+            "stateEstimate.y": 0.11317833513021469,
+            "stateEstimate.z": 0.1448207050561905
+        },
+        {
+            "stateEstimate.x": 0.2530776560306549,
+            "stateEstimate.y": 0.11292532086372375,
+            "stateEstimate.z": 0.14495329558849335
+        },
+        {
+            "stateEstimate.x": 0.2529006004333496,
+            "stateEstimate.y": 0.11300987750291824,
+            "stateEstimate.z": 0.14496594667434692
+        },
+        {
+            "stateEstimate.x": 0.2528635859489441,
+            "stateEstimate.y": 0.11293082684278488,
+            "stateEstimate.z": 0.14484505355358124
+        },
+        {
+            "stateEstimate.x": 0.252396821975708,
+            "stateEstimate.y": 0.11321531981229782,
+            "stateEstimate.z": 0.14447902143001556
+        },
+        {
+            "stateEstimate.x": 0.252580851316452,
+            "stateEstimate.y": 0.11308281868696213,
+            "stateEstimate.z": 0.14465142786502838
+        },
+        {
+            "stateEstimate.x": 0.2526537775993347,
+            "stateEstimate.y": 0.11304350942373276,
+            "stateEstimate.z": 0.14472709596157074
+        },
+        {
+            "stateEstimate.x": 0.2530457675457001,
+            "stateEstimate.y": 0.11284693330526352,
+            "stateEstimate.z": 0.14487427473068237
+        },
+        {
+            "stateEstimate.x": 0.25284114480018616,
+            "stateEstimate.y": 0.11325331777334213,
+            "stateEstimate.z": 0.14461562037467957
+        },
+        {
+            "stateEstimate.x": 0.25311174988746643,
+            "stateEstimate.y": 0.11315663158893585,
+            "stateEstimate.z": 0.14480377733707428
+        },
+        {
+            "stateEstimate.x": 0.2527085244655609,
+            "stateEstimate.y": 0.11335224658250809,
+            "stateEstimate.z": 0.14456488192081451
+        },
+        {
+            "stateEstimate.x": 0.2524874806404114,
+            "stateEstimate.y": 0.11347196251153946,
+            "stateEstimate.z": 0.14443114399909973
+        },
+        {
+            "stateEstimate.x": 0.25245583057403564,
+            "stateEstimate.y": 0.1133805438876152,
+            "stateEstimate.z": 0.14436277747154236
+        },
+        {
+            "stateEstimate.x": 0.25288400053977966,
+            "stateEstimate.y": 0.11308498680591583,
+            "stateEstimate.z": 0.144662544131279
+        },
+        {
+            "stateEstimate.x": 0.25267401337623596,
+            "stateEstimate.y": 0.11326824128627777,
+            "stateEstimate.z": 0.14446310698986053
+        },
+        {
+            "stateEstimate.x": 0.2529366910457611,
+            "stateEstimate.y": 0.11312015354633331,
+            "stateEstimate.z": 0.1446731984615326
+        },
+        {
+            "stateEstimate.x": 0.2530863583087921,
+            "stateEstimate.y": 0.11305280774831772,
+            "stateEstimate.z": 0.144764706492424
+        },
+        {
+            "stateEstimate.x": 0.253237783908844,
+            "stateEstimate.y": 0.11300795525312424,
+            "stateEstimate.z": 0.14487116038799286
+        },
+        {
+            "stateEstimate.x": 0.25288793444633484,
+            "stateEstimate.y": 0.1132110208272934,
+            "stateEstimate.z": 0.14476799964904785
+        },
+        {
+            "stateEstimate.x": 0.2529807388782501,
+            "stateEstimate.y": 0.1131342425942421,
+            "stateEstimate.z": 0.14485841989517212
+        },
+        {
+            "stateEstimate.x": 0.25263139605522156,
+            "stateEstimate.y": 0.11339914798736572,
+            "stateEstimate.z": 0.1446409672498703
+        },
+        {
+            "stateEstimate.x": 0.2527143359184265,
+            "stateEstimate.y": 0.11326684802770615,
+            "stateEstimate.z": 0.14463742077350616
+        },
+        {
+            "stateEstimate.x": 0.2528442442417145,
+            "stateEstimate.y": 0.11312159895896912,
+            "stateEstimate.z": 0.14469678699970245
+        },
+        {
+            "stateEstimate.x": 0.25277504324913025,
+            "stateEstimate.y": 0.11309552192687988,
+            "stateEstimate.z": 0.1447562426328659
+        },
+        {
+            "stateEstimate.x": 0.2529164254665375,
+            "stateEstimate.y": 0.11309973150491714,
+            "stateEstimate.z": 0.14478369057178497
+        },
+        {
+            "stateEstimate.x": 0.2526950538158417,
+            "stateEstimate.y": 0.11329793930053711,
+            "stateEstimate.z": 0.14459435641765594
+        },
+        {
+            "stateEstimate.x": 0.2529831528663635,
+            "stateEstimate.y": 0.11318188160657883,
+            "stateEstimate.z": 0.14469221234321594
+        },
+        {
+            "stateEstimate.x": 0.25323203206062317,
+            "stateEstimate.y": 0.11304748058319092,
+            "stateEstimate.z": 0.14478234946727753
+        },
+        {
+            "stateEstimate.x": 0.25309404730796814,
+            "stateEstimate.y": 0.11304305493831635,
+            "stateEstimate.z": 0.1447262465953827
+        },
+        {
+            "stateEstimate.x": 0.25309833884239197,
+            "stateEstimate.y": 0.11297261714935303,
+            "stateEstimate.z": 0.1448378711938858
+        },
+        {
+            "stateEstimate.x": 0.25294727087020874,
+            "stateEstimate.y": 0.11310532689094543,
+            "stateEstimate.z": 0.14475791156291962
+        },
+        {
+            "stateEstimate.x": 0.25249963998794556,
+            "stateEstimate.y": 0.1134427860379219,
+            "stateEstimate.z": 0.14449186623096466
+        },
+        {
+            "stateEstimate.x": 0.25285643339157104,
+            "stateEstimate.y": 0.11314067989587784,
+            "stateEstimate.z": 0.14482367038726807
+        },
+        {
+            "stateEstimate.x": 0.25294023752212524,
+            "stateEstimate.y": 0.11303523182868958,
+            "stateEstimate.z": 0.1449647843837738
+        },
+        {
+            "stateEstimate.x": 0.25284770131111145,
+            "stateEstimate.y": 0.11310048401355743,
+            "stateEstimate.z": 0.14491991698741913
+        },
+        {
+            "stateEstimate.x": 0.2525203227996826,
+            "stateEstimate.y": 0.11324559897184372,
+            "stateEstimate.z": 0.1447615623474121
+        },
+        {
+            "stateEstimate.x": 0.2519594728946686,
+            "stateEstimate.y": 0.11354994773864746,
+            "stateEstimate.z": 0.14441940188407898
+        }
+    ],
+    "vel": [
+        {
+            "stateEstimate.vx": -0.0380728505551815,
+            "stateEstimate.vy": 0.01958550326526165,
+            "stateEstimate.vz": -0.011318422853946686
+        },
+        {
+            "stateEstimate.vx": -0.03790803626179695,
+            "stateEstimate.vy": 0.020097769796848297,
+            "stateEstimate.vz": -0.010914498008787632
+        },
+        {
+            "stateEstimate.vx": -0.03145918622612953,
+            "stateEstimate.vy": 0.015903135761618614,
+            "stateEstimate.vz": -0.009541178122162819
+        },
+        {
+            "stateEstimate.vx": -0.019924437627196312,
+            "stateEstimate.vy": 0.010973178781569004,
+            "stateEstimate.vz": -0.007552323862910271
+        },
+        {
+            "stateEstimate.vx": -0.01847611553966999,
+            "stateEstimate.vy": 0.01074982900172472,
+            "stateEstimate.vz": -0.00893228966742754
+        },
+        {
+            "stateEstimate.vx": -0.017263544723391533,
+            "stateEstimate.vy": 0.010143204592168331,
+            "stateEstimate.vz": -0.009565896354615688
+        },
+        {
+            "stateEstimate.vx": -0.013735923916101456,
+            "stateEstimate.vy": 0.008739577606320381,
+            "stateEstimate.vz": -0.008861913345754147
+        },
+        {
+            "stateEstimate.vx": -0.01224888488650322,
+            "stateEstimate.vy": 0.008158943615853786,
+            "stateEstimate.vz": -0.008209032006561756
+        },
+        {
+            "stateEstimate.vx": -0.011181725189089775,
+            "stateEstimate.vy": 0.006846072617918253,
+            "stateEstimate.vz": -0.008542310446500778
+        },
+        {
+            "stateEstimate.vx": -0.01010455284267664,
+            "stateEstimate.vy": 0.006208047736436129,
+            "stateEstimate.vz": -0.008810492232441902
+        },
+        {
+            "stateEstimate.vx": -0.008564289659261703,
+            "stateEstimate.vy": 0.004852351266890764,
+            "stateEstimate.vz": -0.006898102350533009
+        },
+        {
+            "stateEstimate.vx": -0.008591030724346638,
+            "stateEstimate.vy": 0.005322183016687632,
+            "stateEstimate.vz": -0.006969410926103592
+        },
+        {
+            "stateEstimate.vx": -0.007434270344674587,
+            "stateEstimate.vy": 0.004937964025884867,
+            "stateEstimate.vz": -0.006858273409307003
+        },
+        {
+            "stateEstimate.vx": -0.007177782244980335,
+            "stateEstimate.vy": 0.005324298050254583,
+            "stateEstimate.vz": -0.007234430871903896
+        },
+        {
+            "stateEstimate.vx": -0.007922583259642124,
+            "stateEstimate.vy": 0.005808189511299133,
+            "stateEstimate.vz": -0.008911477401852608
+        },
+        {
+            "stateEstimate.vx": -0.008726201951503754,
+            "stateEstimate.vy": 0.006713088136166334,
+            "stateEstimate.vz": -0.00998860877007246
+        },
+        {
+            "stateEstimate.vx": -0.009042664431035519,
+            "stateEstimate.vy": 0.0066274115815758705,
+            "stateEstimate.vz": -0.009299899451434612
+        },
+        {
+            "stateEstimate.vx": -0.009400451555848122,
+            "stateEstimate.vy": 0.007108189165592194,
+            "stateEstimate.vz": -0.009354526177048683
+        },
+        {
+            "stateEstimate.vx": -0.011196544393897057,
+            "stateEstimate.vy": 0.008030266501009464,
+            "stateEstimate.vz": -0.008482181467115879
+        },
+        {
+            "stateEstimate.vx": -0.012097010388970375,
+            "stateEstimate.vy": 0.008863801136612892,
+            "stateEstimate.vz": -0.008117062039673328
+        },
+        {
+            "stateEstimate.vx": -0.011781538836658001,
+            "stateEstimate.vy": 0.009452642872929573,
+            "stateEstimate.vz": -0.008335203863680363
+        },
+        {
+            "stateEstimate.vx": -0.010496038012206554,
+            "stateEstimate.vy": 0.00826193206012249,
+            "stateEstimate.vz": -0.0073293475434184074
+        },
+        {
+            "stateEstimate.vx": -0.011302061378955841,
+            "stateEstimate.vy": 0.007061326876282692,
+            "stateEstimate.vz": -0.007559102028608322
+        },
+        {
+            "stateEstimate.vx": -0.010599094443023205,
+            "stateEstimate.vy": 0.005565686151385307,
+            "stateEstimate.vz": -0.008348141796886921
+        },
+        {
+            "stateEstimate.vx": -0.010494019836187363,
+            "stateEstimate.vy": 0.005997419822961092,
+            "stateEstimate.vz": -0.007951040752232075
+        },
+        {
+            "stateEstimate.vx": -0.012639082036912441,
+            "stateEstimate.vy": 0.008154884912073612,
+            "stateEstimate.vz": -0.010261833667755127
+        },
+        {
+            "stateEstimate.vx": -0.009821067564189434,
+            "stateEstimate.vy": 0.007523485459387302,
+            "stateEstimate.vz": -0.00683698570355773
+        },
+        {
+            "stateEstimate.vx": -0.011408625170588493,
+            "stateEstimate.vy": 0.008114879950881004,
+            "stateEstimate.vz": -0.008037847466766834
+        },
+        {
+            "stateEstimate.vx": -0.011073494330048561,
+            "stateEstimate.vy": 0.008213863708078861,
+            "stateEstimate.vz": -0.007638405542820692
+        },
+        {
+            "stateEstimate.vx": -0.012067025527358055,
+            "stateEstimate.vy": 0.00829340610653162,
+            "stateEstimate.vz": -0.008535876870155334
+        },
+        {
+            "stateEstimate.vx": -0.010232644155621529,
+            "stateEstimate.vy": 0.008495043031871319,
+            "stateEstimate.vz": -0.008695685304701328
+        },
+        {
+            "stateEstimate.vx": -0.009054421447217464,
+            "stateEstimate.vy": 0.0074063376523554325,
+            "stateEstimate.vz": -0.007889346219599247
+        },
+        {
+            "stateEstimate.vx": -0.014068919233977795,
+            "stateEstimate.vy": 0.009101984091103077,
+            "stateEstimate.vz": -0.00895133800804615
+        },
+        {
+            "stateEstimate.vx": -0.0136985182762146,
+            "stateEstimate.vy": 0.007999404333531857,
+            "stateEstimate.vz": -0.008478699252009392
+        }
+    ],
+    "acc": [
+        {
+            "stateEstimate.ax": -0.008625042624771595,
+            "stateEstimate.ay": 0.00657895440235734,
+            "stateEstimate.az": -0.002894759178161621
+        },
+        {
+            "stateEstimate.ax": -0.006687663495540619,
+            "stateEstimate.ay": 0.002987109823152423,
+            "stateEstimate.az": -9.244680404663086e-05
+        },
+        {
+            "stateEstimate.ax": -0.005069561302661896,
+            "stateEstimate.ay": 0.004186295438557863,
+            "stateEstimate.az": -0.005032598972320557
+        },
+        {
+            "stateEstimate.ax": -0.004735918715596199,
+            "stateEstimate.ay": 0.0036474340595304966,
+            "stateEstimate.az": -0.0006161332130432129
+        },
+        {
+            "stateEstimate.ax": -0.005795385222882032,
+            "stateEstimate.ay": 0.0023115728981792927,
+            "stateEstimate.az": -0.00325852632522583
+        },
+        {
+            "stateEstimate.ax": -0.0031147850677371025,
+            "stateEstimate.ay": 0.0029250839725136757,
+            "stateEstimate.az": -0.0002129673957824707
+        },
+        {
+            "stateEstimate.ax": -0.003181760199368,
+            "stateEstimate.ay": 0.0028359349817037582,
+            "stateEstimate.az": -0.00043129920959472656
+        },
+        {
+            "stateEstimate.ax": -0.0035736116115003824,
+            "stateEstimate.ay": 0.0012389832409098744,
+            "stateEstimate.az": -0.008090734481811523
+        },
+        {
+            "stateEstimate.ax": -0.003410662990063429,
+            "stateEstimate.ay": 0.002495405962690711,
+            "stateEstimate.az": 2.0265579223632812e-06
+        },
+        {
+            "stateEstimate.ax": -0.0018098551081493497,
+            "stateEstimate.ay": 0.001300624804571271,
+            "stateEstimate.az": -0.00456470251083374
+        },
+        {
+            "stateEstimate.ax": -0.0014898686204105616,
+            "stateEstimate.ay": 0.003508499125018716,
+            "stateEstimate.az": -0.002120494842529297
+        },
+        {
+            "stateEstimate.ax": -0.002793347230181098,
+            "stateEstimate.ay": 0.001405511749908328,
+            "stateEstimate.az": -0.0046773552894592285
+        },
+        {
+            "stateEstimate.ax": -0.0030108129139989614,
+            "stateEstimate.ay": 0.0026626093313097954,
+            "stateEstimate.az": -0.004712283611297607
+        },
+        {
+            "stateEstimate.ax": -0.004980269819498062,
+            "stateEstimate.ay": 0.0026840369682759047,
+            "stateEstimate.az": -0.002431929111480713
+        },
+        {
+            "stateEstimate.ax": -0.003222273662686348,
+            "stateEstimate.ay": 0.0019561133813112974,
+            "stateEstimate.az": -0.004318356513977051
+        },
+        {
+            "stateEstimate.ax": -0.0032237234991043806,
+            "stateEstimate.ay": 0.0014595057582482696,
+            "stateEstimate.az": -0.0008282661437988281
+        },
+        {
+            "stateEstimate.ax": -0.003181806532666087,
+            "stateEstimate.ay": 0.0030216737650334835,
+            "stateEstimate.az": -0.0051171183586120605
+        },
+        {
+            "stateEstimate.ax": -0.004548267461359501,
+            "stateEstimate.ay": 0.002023420063778758,
+            "stateEstimate.az": -0.003517448902130127
+        },
+        {
+            "stateEstimate.ax": -0.004289036151021719,
+            "stateEstimate.ay": 0.00436542509123683,
+            "stateEstimate.az": -0.0034462809562683105
+        },
+        {
+            "stateEstimate.ax": -0.0034527904354035854,
+            "stateEstimate.ay": 0.0041679213754832745,
+            "stateEstimate.az": -0.005486667156219482
+        },
+        {
+            "stateEstimate.ax": -0.004146356601268053,
+            "stateEstimate.ay": 0.0031281718984246254,
+            "stateEstimate.az": 0.00012362003326416016
+        },
+        {
+            "stateEstimate.ax": -0.0030792546458542347,
+            "stateEstimate.ay": 0.001178732723928988,
+            "stateEstimate.az": -0.003032982349395752
+        },
+        {
+            "stateEstimate.ax": -0.0038754187989979982,
+            "stateEstimate.ay": 0.0018706030678004026,
+            "stateEstimate.az": -0.003509998321533203
+        },
+        {
+            "stateEstimate.ax": -0.0038783259224146605,
+            "stateEstimate.ay": 0.003259342396631837,
+            "stateEstimate.az": -0.0048299431800842285
+        },
+        {
+            "stateEstimate.ax": -0.0025402384344488382,
+            "stateEstimate.ay": 0.000696489296387881,
+            "stateEstimate.az": -0.0031985044479370117
+        },
+        {
+            "stateEstimate.ax": -0.0031412236858159304,
+            "stateEstimate.ay": 0.002436104230582714,
+            "stateEstimate.az": -0.002614736557006836
+        },
+        {
+            "stateEstimate.ax": -0.002203509211540222,
+            "stateEstimate.ay": 0.001271954271942377,
+            "stateEstimate.az": -0.0023296475410461426
+        },
+        {
+            "stateEstimate.ax": -0.0025799483992159367,
+            "stateEstimate.ay": 0.0015188106335699558,
+            "stateEstimate.az": -0.001789689064025879
+        },
+        {
+            "stateEstimate.ax": -0.0030376084614545107,
+            "stateEstimate.ay": 0.0030719044152647257,
+            "stateEstimate.az": -0.0026723742485046387
+        },
+        {
+            "stateEstimate.ax": -0.004056362900882959,
+            "stateEstimate.ay": 0.002919508144259453,
+            "stateEstimate.az": -0.0015633106231689453
+        },
+        {
+            "stateEstimate.ax": -0.007347504608333111,
+            "stateEstimate.ay": 0.001565603888593614,
+            "stateEstimate.az": -0.0018671751022338867
+        },
+        {
+            "stateEstimate.ax": -0.0034338394179940224,
+            "stateEstimate.ay": 0.002271251054480672,
+            "stateEstimate.az": -0.004981338977813721
+        },
+        {
+            "stateEstimate.ax": -0.002817097818478942,
+            "stateEstimate.ay": 0.0034231715835630894,
+            "stateEstimate.az": -0.003602147102355957
+        },
+        {
+            "stateEstimate.ax": -0.004772793035954237,
+            "stateEstimate.ay": 0.002856999635696411,
+            "stateEstimate.az": -0.0026934146881103516
+        },
+        {
+            "stateEstimate.ax": -0.002343863481655717,
+            "stateEstimate.ay": 0.0030397637747228146,
+            "stateEstimate.az": -0.0014944672584533691
+        },
+        {
+            "stateEstimate.ax": -0.004237224813550711,
+            "stateEstimate.ay": 0.0030889196787029505,
+            "stateEstimate.az": -0.0027179718017578125
+        },
+        {
+            "stateEstimate.ax": -0.006228695623576641,
+            "stateEstimate.ay": 0.0027733962051570415,
+            "stateEstimate.az": -0.002533257007598877
+        },
+        {
+            "stateEstimate.ax": -0.0013962099328637123,
+            "stateEstimate.ay": 0.0027644007932394743,
+            "stateEstimate.az": -0.004162132740020752
+        },
+        {
+            "stateEstimate.ax": -0.0020640555303543806,
+            "stateEstimate.ay": 0.002124173566699028,
+            "stateEstimate.az": -0.002825021743774414
+        },
+        {
+            "stateEstimate.ax": -0.0040852343663573265,
+            "stateEstimate.ay": 0.002241698559373617,
+            "stateEstimate.az": -0.001169741153717041
+        },
+        {
+            "stateEstimate.ax": -0.004146048333495855,
+            "stateEstimate.ay": 0.0037991167046129704,
+            "stateEstimate.az": -0.0022440552711486816
+        },
+        {
+            "stateEstimate.ax": -0.005322200246155262,
+            "stateEstimate.ay": 0.0037534309085458517,
+            "stateEstimate.az": -0.004429996013641357
+        },
+        {
+            "stateEstimate.ax": -0.0056119197979569435,
+            "stateEstimate.ay": 0.002493790350854397,
+            "stateEstimate.az": -0.0011817216873168945
+        },
+        {
+            "stateEstimate.ax": -0.005352436564862728,
+            "stateEstimate.ay": 0.001351801911368966,
+            "stateEstimate.az": -0.0030049681663513184
+        },
+        {
+            "stateEstimate.ax": -0.0038447652477771044,
+            "stateEstimate.ay": 0.001579207950271666,
+            "stateEstimate.az": -0.00010633468627929688
+        }
+    ],
+    "attitude_rate": [
+        {
+            "stateEstimateZ.rateRoll": 2.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": 0.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -4.0,
+            "stateEstimateZ.ratePitch": 3.0,
+            "stateEstimateZ.rateYaw": 4.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -4.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": -3.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": -3.0,
+            "stateEstimateZ.rateYaw": 2.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": 2.0,
+            "stateEstimateZ.rateYaw": -2.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 2.0,
+            "stateEstimateZ.ratePitch": -1.0,
+            "stateEstimateZ.rateYaw": -3.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": 1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -2.0,
+            "stateEstimateZ.ratePitch": 2.0,
+            "stateEstimateZ.rateYaw": 1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -1.0,
+            "stateEstimateZ.ratePitch": 3.0,
+            "stateEstimateZ.rateYaw": -2.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": -1.0,
+            "stateEstimateZ.rateYaw": 2.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": 3.0,
+            "stateEstimateZ.rateYaw": -2.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -3.0,
+            "stateEstimateZ.ratePitch": 2.0,
+            "stateEstimateZ.rateYaw": -2.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -4.0,
+            "stateEstimateZ.ratePitch": -2.0,
+            "stateEstimateZ.rateYaw": 2.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -1.0,
+            "stateEstimateZ.ratePitch": 1.0,
+            "stateEstimateZ.rateYaw": 0.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": -4.0,
+            "stateEstimateZ.rateYaw": 1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": -2.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": -3.0,
+            "stateEstimateZ.rateYaw": 3.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 3.0,
+            "stateEstimateZ.ratePitch": -1.0,
+            "stateEstimateZ.rateYaw": 1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": 1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 1.0,
+            "stateEstimateZ.ratePitch": 1.0,
+            "stateEstimateZ.rateYaw": 3.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -2.0,
+            "stateEstimateZ.ratePitch": 1.0,
+            "stateEstimateZ.rateYaw": -3.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -1.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": 3.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -1.0,
+            "stateEstimateZ.ratePitch": 3.0,
+            "stateEstimateZ.rateYaw": 0.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -1.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": 1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 1.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": 1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 1.0,
+            "stateEstimateZ.ratePitch": 3.0,
+            "stateEstimateZ.rateYaw": -1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 1.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": 0.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": -1.0,
+            "stateEstimateZ.rateYaw": 1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 1.0,
+            "stateEstimateZ.ratePitch": 2.0,
+            "stateEstimateZ.rateYaw": 1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": 1.0,
+            "stateEstimateZ.rateYaw": -1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": 1.0,
+            "stateEstimateZ.rateYaw": -1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 2.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": 3.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": 1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": 2.0,
+            "stateEstimateZ.rateYaw": 0.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -2.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": 6.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -3.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": 0.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -1.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": -3.0
+        },
+        {
+            "stateEstimateZ.rateRoll": -1.0,
+            "stateEstimateZ.ratePitch": -4.0,
+            "stateEstimateZ.rateYaw": -2.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": 2.0,
+            "stateEstimateZ.rateYaw": -3.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": -3.0,
+            "stateEstimateZ.rateYaw": 0.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": 0.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 3.0,
+            "stateEstimateZ.ratePitch": 0.0,
+            "stateEstimateZ.rateYaw": -1.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": -2.0,
+            "stateEstimateZ.rateYaw": 0.0
+        },
+        {
+            "stateEstimateZ.rateRoll": 0.0,
+            "stateEstimateZ.ratePitch": 6.0,
+            "stateEstimateZ.rateYaw": 0.0
+        }
+    ],
+    "motor": [
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        },
+        {
+            "motor.m1": 38010.0,
+            "motor.m2": 0.0,
+            "motor.m3": 30801.0,
+            "motor.m4": 0.0
+        }
+    ],
+    "motor_req": [
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        },
+        {
+            "motor.m1req": 38010.0,
+            "motor.m2req": 0.0,
+            "motor.m3req": 30801.0,
+            "motor.m4req": 0.0
+        }
+    ],
+    "gyro": [
+        {
+            "gyro.x": -0.08104518800973892,
+            "gyro.y": -0.08938809484243393,
+            "gyro.z": 0.13210755586624146
+        },
+        {
+            "gyro.x": -0.05741092190146446,
+            "gyro.y": 0.07127813994884491,
+            "gyro.z": -0.1333341896533966
+        },
+        {
+            "gyro.x": -0.03832915425300598,
+            "gyro.y": -0.0401010625064373,
+            "gyro.z": -0.00920194759964943
+        },
+        {
+            "gyro.x": -0.17357578873634338,
+            "gyro.y": 0.31101223826408386,
+            "gyro.z": 0.1342029720544815
+        },
+        {
+            "gyro.x": -0.19278457760810852,
+            "gyro.y": 0.13068699836730957,
+            "gyro.z": 0.04521402344107628
+        },
+        {
+            "gyro.x": -0.2138403058052063,
+            "gyro.y": 0.29156357049942017,
+            "gyro.z": 0.12344325333833694
+        },
+        {
+            "gyro.x": -0.07958536595106125,
+            "gyro.y": 0.17036382853984833,
+            "gyro.z": -0.01674535684287548
+        },
+        {
+            "gyro.x": -0.07677559554576874,
+            "gyro.y": -0.2814772427082062,
+            "gyro.z": -0.07600268721580505
+        },
+        {
+            "gyro.x": -0.021571405231952667,
+            "gyro.y": -0.16817976534366608,
+            "gyro.z": 0.017462218180298805
+        },
+        {
+            "gyro.x": -0.3472656309604645,
+            "gyro.y": 0.0985122099518776,
+            "gyro.z": 0.05036700889468193
+        },
+        {
+            "gyro.x": -0.2994130253791809,
+            "gyro.y": -0.169849693775177,
+            "gyro.z": -0.12960267066955566
+        },
+        {
+            "gyro.x": -0.06563295423984528,
+            "gyro.y": 0.3211975693702698,
+            "gyro.z": 0.0583573617041111
+        },
+        {
+            "gyro.x": -0.014358757995069027,
+            "gyro.y": 0.05111267417669296,
+            "gyro.z": 0.03634658083319664
+        },
+        {
+            "gyro.x": -0.23318086564540863,
+            "gyro.y": 0.1452455371618271,
+            "gyro.z": 0.04428134486079216
+        },
+        {
+            "gyro.x": -0.028758632019162178,
+            "gyro.y": -0.06914443522691727,
+            "gyro.z": 0.10148435831069946
+        },
+        {
+            "gyro.x": -0.25982990860939026,
+            "gyro.y": -0.1332738697528839,
+            "gyro.z": 0.21570980548858643
+        },
+        {
+            "gyro.x": -0.06924914568662643,
+            "gyro.y": -0.23919503390789032,
+            "gyro.z": -0.09116462618112564
+        },
+        {
+            "gyro.x": -0.08886626362800598,
+            "gyro.y": -0.05769927054643631,
+            "gyro.z": 0.033915597945451736
+        },
+        {
+            "gyro.x": -0.039777763187885284,
+            "gyro.y": -0.042322367429733276,
+            "gyro.z": 0.11344358325004578
+        },
+        {
+            "gyro.x": 0.029299939051270485,
+            "gyro.y": -0.0727907046675682,
+            "gyro.z": -0.035176947712898254
+        },
+        {
+            "gyro.x": -0.2789838910102844,
+            "gyro.y": 0.03484895080327988,
+            "gyro.z": -0.06766510009765625
+        },
+        {
+            "gyro.x": 0.008196002803742886,
+            "gyro.y": -0.16232052445411682,
+            "gyro.z": 0.13513171672821045
+        },
+        {
+            "gyro.x": -0.21156981587409973,
+            "gyro.y": -0.04333864152431488,
+            "gyro.z": -0.12131612747907639
+        },
+        {
+            "gyro.x": -0.043322909623384476,
+            "gyro.y": -0.032419849187135696,
+            "gyro.z": -0.06380318105220795
+        },
+        {
+            "gyro.x": -0.01921243593096733,
+            "gyro.y": -0.03605065494775772,
+            "gyro.z": 0.2424137443304062
+        },
+        {
+            "gyro.x": 0.009912724606692791,
+            "gyro.y": -0.08191478997468948,
+            "gyro.z": -0.030848048627376556
+        },
+        {
+            "gyro.x": 0.22752870619297028,
+            "gyro.y": -0.08802680671215057,
+            "gyro.z": -0.0693914145231247
+        },
+        {
+            "gyro.x": -0.13137418031692505,
+            "gyro.y": 0.010007225908339024,
+            "gyro.z": -0.06160679832100868
+        },
+        {
+            "gyro.x": 0.1350068747997284,
+            "gyro.y": 0.015851905569434166,
+            "gyro.z": 0.13758091628551483
+        },
+        {
+            "gyro.x": -0.1377107948064804,
+            "gyro.y": 0.2944576144218445,
+            "gyro.z": 0.09594351053237915
+        },
+        {
+            "gyro.x": 0.09628790616989136,
+            "gyro.y": -0.08697322756052017,
+            "gyro.z": 0.05786888301372528
+        },
+        {
+            "gyro.x": 0.12044882029294968,
+            "gyro.y": 0.004752920009195805,
+            "gyro.z": 0.1024136170744896
+        },
+        {
+            "gyro.x": -0.03311043605208397,
+            "gyro.y": -0.2751997709274292,
+            "gyro.z": -0.148019939661026
+        },
+        {
+            "gyro.x": -0.13202668726444244,
+            "gyro.y": 0.2105061411857605,
+            "gyro.z": -0.115947425365448
+        },
+        {
+            "gyro.x": -0.2509702146053314,
+            "gyro.y": 0.15843425691127777,
+            "gyro.z": 0.10876861959695816
+        },
+        {
+            "gyro.x": 0.07878109812736511,
+            "gyro.y": -0.3116097152233124,
+            "gyro.z": -0.11685319989919662
+        },
+        {
+            "gyro.x": -0.19789248704910278,
+            "gyro.y": 0.3911050856113434,
+            "gyro.z": 0.24313464760780334
+        },
+        {
+            "gyro.x": -0.1059441789984703,
+            "gyro.y": -0.26861849427223206,
+            "gyro.z": 0.059198446571826935
+        },
+        {
+            "gyro.x": -0.04015149176120758,
+            "gyro.y": 0.023202285170555115,
+            "gyro.z": -0.03788534924387932
+        },
+        {
+            "gyro.x": -0.002460974268615246,
+            "gyro.y": 0.026775961741805077,
+            "gyro.z": 0.08330701291561127
+        },
+        {
+            "gyro.x": -0.14004795253276825,
+            "gyro.y": -0.07428121566772461,
+            "gyro.z": -0.029891787096858025
+        },
+        {
+            "gyro.x": -0.04995439946651459,
+            "gyro.y": 0.04775708168745041,
+            "gyro.z": -0.008805378340184689
+        },
+        {
+            "gyro.x": -0.04434718191623688,
+            "gyro.y": -0.06400924921035767,
+            "gyro.z": -0.03548962250351906
+        },
+        {
+            "gyro.x": -0.04078849032521248,
+            "gyro.y": -0.012935679405927658,
+            "gyro.z": 0.0581418015062809
+        },
+        {
+            "gyro.x": -0.1879364550113678,
+            "gyro.y": 0.11674020439386368,
+            "gyro.z": 0.022442316636443138
+        },
+        {
+            "gyro.x": -0.016238920390605927,
+            "gyro.y": 0.1190100833773613,
+            "gyro.z": -0.02199503406882286
+        },
+        {
+            "gyro.x": -0.09401114284992218,
+            "gyro.y": -0.04749901220202446,
+            "gyro.z": 0.03855898603796959
+        },
+        {
+            "gyro.x": -0.02717065066099167,
+            "gyro.y": 0.0047383480705320835,
+            "gyro.z": 0.01752350479364395
+        },
+        {
+            "gyro.x": -0.031765442341566086,
+            "gyro.y": 0.05181931331753731,
+            "gyro.z": -0.23660370707511902
+        },
+        {
+            "gyro.x": -0.03460386395454407,
+            "gyro.y": -0.19885534048080444,
+            "gyro.z": 0.007934379391372204
+        },
+        {
+            "gyro.x": -0.02424551732838154,
+            "gyro.y": 0.13699160516262054,
+            "gyro.z": -0.17604506015777588
+        },
+        {
+            "gyro.x": -0.10285403579473495,
+            "gyro.y": 0.009163875132799149,
+            "gyro.z": -0.08087480068206787
+        },
+        {
+            "gyro.x": -0.12658891081809998,
+            "gyro.y": -0.05536726489663124,
+            "gyro.z": -0.021604107692837715
+        },
+        {
+            "gyro.x": -0.07550061494112015,
+            "gyro.y": 0.0462275892496109,
+            "gyro.z": -0.06277867406606674
+        },
+        {
+            "gyro.x": 0.16839614510536194,
+            "gyro.y": 0.07159144431352615,
+            "gyro.z": -0.04254698008298874
+        },
+        {
+            "gyro.x": -0.039395395666360855,
+            "gyro.y": 0.07771360129117966,
+            "gyro.z": 0.1583172231912613
+        },
+        {
+            "gyro.x": -0.18017062544822693,
+            "gyro.y": 0.11084815859794617,
+            "gyro.z": 0.12135720252990723
+        },
+        {
+            "gyro.x": -0.08493372797966003,
+            "gyro.y": -0.24548155069351196,
+            "gyro.z": -0.34992146492004395
+        },
+        {
+            "gyro.x": -0.07124687731266022,
+            "gyro.y": 0.04683795943856239,
+            "gyro.z": -0.08981620520353317
+        },
+        {
+            "gyro.x": -0.2027936577796936,
+            "gyro.y": 0.18073344230651855,
+            "gyro.z": 0.3231983482837677
+        },
+        {
+            "gyro.x": -0.22942307591438293,
+            "gyro.y": 0.10841843485832214,
+            "gyro.z": -0.14768537878990173
+        },
+        {
+            "gyro.x": -0.20075087249279022,
+            "gyro.y": 0.08584723621606827,
+            "gyro.z": 0.20851737260818481
+        },
+        {
+            "gyro.x": -0.028269805014133453,
+            "gyro.y": -0.03829064220190048,
+            "gyro.z": -0.16233450174331665
+        },
+        {
+            "gyro.x": 0.20015357434749603,
+            "gyro.y": 0.06975582987070084,
+            "gyro.z": -0.16388893127441406
+        },
+        {
+            "gyro.x": -0.04778898507356644,
+            "gyro.y": 0.0030844365246593952,
+            "gyro.z": -0.06268466264009476
+        },
+        {
+            "gyro.x": 0.039711810648441315,
+            "gyro.y": -0.10973857343196869,
+            "gyro.z": 0.038062334060668945
+        },
+        {
+            "gyro.x": -0.22083333134651184,
+            "gyro.y": -0.2752211093902588,
+            "gyro.z": -0.20834459364414215
+        },
+        {
+            "gyro.x": -0.06705208867788315,
+            "gyro.y": 0.11237163841724396,
+            "gyro.z": -0.039037901908159256
+        },
+        {
+            "gyro.x": 0.01983044110238552,
+            "gyro.y": 0.03170538693666458,
+            "gyro.z": -0.0005446344730444252
+        },
+        {
+            "gyro.x": -0.3020670711994171,
+            "gyro.y": -0.08580035716295242,
+            "gyro.z": 0.19159884750843048
+        },
+        {
+            "gyro.x": 0.025381291285157204,
+            "gyro.y": 0.0327201746404171,
+            "gyro.z": -0.09572140872478485
+        },
+        {
+            "gyro.x": -0.1289268583059311,
+            "gyro.y": -0.033091962337493896,
+            "gyro.z": 0.05048225075006485
+        },
+        {
+            "gyro.x": 0.09861959517002106,
+            "gyro.y": -0.17769452929496765,
+            "gyro.z": 0.047509048134088516
+        },
+        {
+            "gyro.x": -0.21869023144245148,
+            "gyro.y": -0.15361642837524414,
+            "gyro.z": 0.040633674710989
+        },
+        {
+            "gyro.x": -0.03597138077020645,
+            "gyro.y": 0.2090366780757904,
+            "gyro.z": 0.09339512139558792
+        },
+        {
+            "gyro.x": -0.06654996424913406,
+            "gyro.y": -0.09032225608825684,
+            "gyro.z": -0.2940027415752411
+        },
+        {
+            "gyro.x": -0.11409701406955719,
+            "gyro.y": 0.06296108663082123,
+            "gyro.z": -0.005993769038468599
+        },
+        {
+            "gyro.x": -0.08784427493810654,
+            "gyro.y": -0.039982907474040985,
+            "gyro.z": 0.0010939898202195764
+        }
+    ],
+    "target_pos": [
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        },
+        {
+            "ctrltarget.x": 0.0,
+            "ctrltarget.y": 0.0,
+            "ctrltarget.z": 0.0
+        }
+    ],
+    "target_vel": [
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        },
+        {
+            "ctrltarget.vx": 0.0,
+            "ctrltarget.vy": 0.0,
+            "ctrltarget.vz": 0.0
+        }
+    ],
+    "controller_cmd": [
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        },
+        {
+            "controller.cmd_thrust": 0.0,
+            "controller.cmd_roll": 0.0,
+            "controller.cmd_pitch": 0.0,
+            "controller.cmd_yaw": 0.0
+        }
+    ],
+    "controller_attitude": [
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.04445968195796013
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.040883783251047134
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.03944918513298035
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.03874730318784714
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.0377684012055397
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.03676721081137657
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.036182500422000885
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.031522855162620544
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.03074093908071518
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.031163586303591728
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.030154597014188766
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.02702171355485916
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.02918948605656624
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.026934083551168442
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.024854876101017
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.024686548858880997
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.02265046536922455
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.01836984232068062
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.012936439365148544
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.016586599871516228
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.019549047574400902
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.018304629251360893
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.019848749041557312
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.01837233081459999
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.02254711277782917
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.02406749129295349
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.04202805832028389
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.04751027375459671
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.0469546876847744
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.05326385796070099
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.05359738692641258
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.04997389391064644
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.0449039451777935
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.04326976090669632
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.03819185122847557
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.041421543806791306
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.04315149039030075
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.04211397096514702
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.04520244151353836
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.05606880784034729
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.0570540726184845
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.06129975616931915
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.061452530324459076
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.06080470234155655
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.0657934620976448
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.0622079037129879
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.061602987349033356
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.073834128677845
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.07200348377227783
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.07272737473249435
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.06999577581882477
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.07397433370351791
+        },
+        {
+            "controller.roll": 0.0,
+            "controller.pitch": 0.0,
+            "controller.yaw": -0.07205097377300262
+        }
+    ],
+    "controller_attitude_rate": [
+        {
+            "controller.rollRate": 0.3402988612651825,
+            "controller.pitchRate": 5.944769859313965,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": 0.1888788938522339,
+            "controller.pitchRate": 6.456681251525879,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": 0.021349938586354256,
+            "controller.pitchRate": 6.882394313812256,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.09685441851615906,
+            "controller.pitchRate": 7.213841438293457,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.24868355691432953,
+            "controller.pitchRate": 7.598060131072998,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.4043235778808594,
+            "controller.pitchRate": 7.984812259674072,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.4633408486843109,
+            "controller.pitchRate": 8.114546775817871,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.4679288864135742,
+            "controller.pitchRate": 8.13510799407959,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.45997515320777893,
+            "controller.pitchRate": 8.021791458129883,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.38697654008865356,
+            "controller.pitchRate": 7.925745487213135,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.31139540672302246,
+            "controller.pitchRate": 7.867987155914307,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.26143017411231995,
+            "controller.pitchRate": 7.775826454162598,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.21035271883010864,
+            "controller.pitchRate": 7.689356327056885,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.1611575186252594,
+            "controller.pitchRate": 7.546590805053711,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.12478993088006973,
+            "controller.pitchRate": 7.382237434387207,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.07905127108097076,
+            "controller.pitchRate": 7.193265438079834,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.003516524564474821,
+            "controller.pitchRate": 7.119500160217285,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.13387265801429749,
+            "controller.pitchRate": 7.419105529785156,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.16661998629570007,
+            "controller.pitchRate": 7.485177516937256,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.17399442195892334,
+            "controller.pitchRate": 7.447731971740723,
+            "controller.yawRate": 0.0
+        },
+        {
+            "controller.rollRate": -0.28077584505081177,
+            "controller.pitchRate": 7.199944496154785,
+            "controller.yawRate": 0.0
+        }
+    ],
+    "time": [
+        1747858739.1134696,
+        1747858739.2134712,
+        1747858739.313474,
+        1747858739.413475,
+        1747858739.5134761,
+        1747858739.6134777,
+        1747858739.7134788,
+        1747858739.8134804,
+        1747858739.9134815,
+        1747858740.0134828,
+        1747858740.1134844,
+        1747858740.2134857,
+        1747858740.3134868,
+        1747858740.413488,
+        1747858740.5134892,
+        1747858740.6134899,
+        1747858740.7134912,
+        1747858740.8134923,
+        1747858740.9134934,
+        1747858741.0134943,
+        1747858741.113495,
+        1747858741.213496,
+        1747858741.3134968,
+        1747858741.413498,
+        1747858741.5134985,
+        1747858741.6134996,
+        1747858741.7135007,
+        1747858741.8135016,
+        1747858741.9135022,
+        1747858742.0135036,
+        1747858742.1135051,
+        1747858742.2135062,
+        1747858742.3135073,
+        1747858742.413509,
+        1747858742.5135098,
+        1747858742.613511,
+        1747858742.713512,
+        1747858742.813513,
+        1747858742.913514,
+        1747858743.0135145,
+        1747858743.1135156,
+        1747858743.213517,
+        1747858743.3135176,
+        1747858743.413519,
+        1747858743.5135195,
+        1747858743.6135204,
+        1747858743.7135215,
+        1747858743.8135223,
+        1747858743.9135232,
+        1747858744.013524,
+        1747858744.1135247,
+        1747858744.2135258,
+        1747858744.3135269,
+        1747858744.413528,
+        1747858744.5135286,
+        1747858744.6135297,
+        1747858744.7135308,
+        1747858744.8135316,
+        1747858744.9135377,
+        1747858745.0135386,
+        1747858745.1135397,
+        1747858745.2135406,
+        1747858745.3135417,
+        1747858745.413543,
+        1747858745.5135438,
+        1747858745.6135457,
+        1747858745.713547,
+        1747858745.813548,
+        1747858745.9135494,
+        1747858746.01355,
+        1747858746.1135511,
+        1747858746.2135527,
+        1747858746.3135543,
+        1747858746.4135559,
+        1747858746.5135572,
+        1747858746.6135583,
+        1747858746.7135599,
+        1747858746.813564,
+        1747858746.9135652,
+        1747858747.013566,
+        1747858747.1135669,
+        1747858747.213568,
+        1747858747.3135693,
+        1747858747.4135716,
+        1747858747.5135734,
+        1747858747.6135745,
+        1747858747.7135758,
+        1747858747.8135767,
+        1747858747.9135783,
+        1747858748.01358,
+        1747858748.1135817,
+        1747858748.2135825,
+        1747858748.3135831,
+        1747858748.413586,
+        1747858748.5135875,
+        1747858748.613589,
+        1747858748.7135904,
+        1747858748.8135927,
+        1747858748.9135938,
+        1747858749.013595
+    ]
+}

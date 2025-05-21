@@ -251,9 +251,8 @@ with QualisysCrazyflie(
             break
         # Mind the clock
         dt = time() - t
-        # Calculate Crazyflie's angular position in circle, based on time
-        phi = circle_speed_factor * dt * 360
-        if dt < 3:
+        
+        if dt < 10:
             if time() - last_saved_t > save_freq:
                 data["time"].append(time())
                 last_saved_t = time()
@@ -264,7 +263,7 @@ with QualisysCrazyflie(
             break
 
 # Open a file in write mode and use json.dump() to write the dictionary to the file
-with open("data.json", "w") as file:
+with open("test_data.json", "w") as file:
     json.dump(data, file, indent=4)
 
 print("Dictionary has been saved to data.json")
