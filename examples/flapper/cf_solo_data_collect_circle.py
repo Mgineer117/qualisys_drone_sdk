@@ -26,7 +26,7 @@ circle_axis = "Z"  # Axis to circle around: 'X' or 'Y' or 'Z' or 'XYZ'
 circle_speed_factor = 9  # How fast the Crazyflie should move along circle [degree/s]
 qtm_ip = "128.174.245.190"
 
-sampling_rate = 0.01  # sec
+sampling_rate = 0.1  # sec
 
 # Watch key presses with a global variable
 last_key_pressed = None

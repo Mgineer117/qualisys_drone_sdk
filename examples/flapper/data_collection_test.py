@@ -252,7 +252,7 @@ with QualisysCrazyflie(
         # Mind the clock
         dt = time() - t
         
-        if dt < 10:
+        if dt < 40:
             if time() - last_saved_t > save_freq:
                 data["time"].append(time())
                 last_saved_t = time()
@@ -261,6 +261,10 @@ with QualisysCrazyflie(
             for logconf in conf_list:
                 logconf.stop()
             break
+    
+    # Stop logging data from the flapper firmware
+    for logconf in conf_list:
+        logconf.stop()
 
 # Open a file in write mode and use json.dump() to write the dictionary to the file
 with open("test_data.json", "w") as file:
