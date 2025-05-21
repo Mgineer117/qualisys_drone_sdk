@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load JSON file
-with open("examples/flapper/circular_traj/circular_Z_20250423183719.json", "r") as f:
+with open("examples/flapper/circular_traj/circular_XYZ_20250521131555.json", "r") as f:
     data = json.load(f)
 
 # Plot positions
