@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load JSON file
-#with open("examples/flapper/circular_traj/circular_XYZ_20250521131555.json", "r") as f:
-with open("examples/flapper/test_data.json", "r") as f:    
+with open("examples/flapper/circular_traj/circular_Z_20250423191906.json", "r") as f:
+#with open("examples/flapper/test_data.json", "r") as f:    
     data = json.load(f)
 
 # Plot positions
@@ -62,22 +62,14 @@ vx_deriv = np.gradient(x_state, dt)
 vy_deriv = np.gradient(y_state, dt)
 vz_deriv = np.gradient(z_state, dt)
 
-target_vel = data["target_vel"]
-vx_ctrltarget = np.array([c["ctrltarget.vx"] for c in target_vel])
-vy_ctrltarget = np.array([c["ctrltarget.vy"] for c in target_vel])
-vz_ctrltarget = np.array([c["ctrltarget.vz"] for c in target_vel])
-
 fig, axs = plt.subplots(3, 1, figsize=(8, 12))
 axs[0].plot(vx_state, label="vx state est")
-axs[0].plot(vx_ctrltarget, label="ctrltarget.vx")
 axs[0].plot(vx_deriv, label="vx by deriv")
 axs[0].legend()
 axs[1].plot(vy_state, label="vy state est")
-axs[1].plot(vy_ctrltarget, label="ctrltarget.vy")
 axs[1].plot(vy_deriv, label="vy by deriv")
 axs[1].legend()
 axs[2].plot(vz_state, label="vz state est")
-axs[2].plot(vz_ctrltarget, label="ctrltarget.vz")
 axs[2].plot(vz_deriv, label="vz by deriv")
 axs[2].legend()
 plt.show()
