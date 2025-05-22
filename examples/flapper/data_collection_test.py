@@ -16,7 +16,7 @@ from cflib.crazyflie.syncLogger import SyncLogger
 from qfly import Pose, QualisysCrazyflie, World, utils
 
 # SETTINGS
-cf_body_name = "flapper"  # QTM rigid body name
+cf_body_name = "flapper_passive"  # QTM rigid body name
 cf_uri = "radio://0/80/2M/E7E7E7E7E7"  # Crazyflie address
 cf_marker_ids = [1, 2, 3, 4]  # Active marker IDs
 circle_radius = 0.5  # Radius of the circular flight path
@@ -145,47 +145,6 @@ with QualisysCrazyflie(
     dt = 0
 
     # Get and print the PID gains
-    # TODO: reset the firmware and print the default PID gains
-    print("PID attitude rate roll Kp", qcf.cf.param.get_value("pid_rate.roll_kp"))
-    print("PID attitude rate roll Ki", qcf.cf.param.get_value("pid_rate.roll_ki"))
-    print("PID attitude rate roll Kd", qcf.cf.param.get_value("pid_rate.roll_kd"))
-    print("PID attitude rate pitch Kp", qcf.cf.param.get_value("pid_rate.pitch_kp"))
-    print("PID attitude rate pitch Ki", qcf.cf.param.get_value("pid_rate.pitch_ki"))
-    print("PID attitude rate pitch Kd", qcf.cf.param.get_value("pid_rate.pitch_kd"))
-    print("PID attitude rate yaw Kp", qcf.cf.param.get_value("pid_rate.yaw_kp"))
-    print("PID attitude rate yaw Ki", qcf.cf.param.get_value("pid_rate.yaw_ki"))
-    print("PID attitude rate yaw Kd", qcf.cf.param.get_value("pid_rate.yaw_kd"))
-    #
-    print("PID attitude roll Kp", qcf.cf.param.get_value("pid_attitude.roll_kp"))
-    print("PID attitude roll Ki", qcf.cf.param.get_value("pid_attitude.roll_ki"))
-    print("PID attitude roll Kd", qcf.cf.param.get_value("pid_attitude.roll_kd"))
-    print("PID attitude pitch Kp", qcf.cf.param.get_value("pid_attitude.pitch_kp"))
-    print("PID attitude pitch Ki", qcf.cf.param.get_value("pid_attitude.pitch_ki"))
-    print("PID attitude pitch Kd", qcf.cf.param.get_value("pid_attitude.pitch_kd"))
-    print("PID attitude yaw Kp", qcf.cf.param.get_value("pid_attitude.yaw_kp"))
-    print("PID attitude yaw Ki", qcf.cf.param.get_value("pid_attitude.yaw_ki"))
-    print("PID attitude yaw Kd", qcf.cf.param.get_value("pid_attitude.yaw_kd"))
-    #
-    print("PID velocity vx Kp", qcf.cf.param.get_value("velCtlPid.vxKp"))
-    print("PID velocity vx Ki", qcf.cf.param.get_value("velCtlPid.vxKi"))
-    print("PID velocity vx Kd", qcf.cf.param.get_value("velCtlPid.vxKd"))
-    print("PID velocity vy Kp", qcf.cf.param.get_value("velCtlPid.vyKp"))
-    print("PID velocity vy Ki", qcf.cf.param.get_value("velCtlPid.vyKi"))
-    print("PID velocity vy Kd", qcf.cf.param.get_value("velCtlPid.vyKd"))
-    print("PID velocity vz Kp", qcf.cf.param.get_value("velCtlPid.vzKp"))
-    print("PID velocity vz Ki", qcf.cf.param.get_value("velCtlPid.vzKi"))
-    print("PID velocity vz Kd", qcf.cf.param.get_value("velCtlPid.vzKd"))
-    #
-    print("PID position x Kp", qcf.cf.param.get_value("posCtlPid.xKp"))
-    print("PID position x Ki", qcf.cf.param.get_value("posCtlPid.xKi"))
-    print("PID position x Kd", qcf.cf.param.get_value("posCtlPid.xKd"))
-    print("PID position y Kp", qcf.cf.param.get_value("posCtlPid.yKp"))
-    print("PID position y Ki", qcf.cf.param.get_value("posCtlPid.yKi"))
-    print("PID position y Kd", qcf.cf.param.get_value("posCtlPid.yKd"))
-    print("PID position z Kp", qcf.cf.param.get_value("posCtlPid.zKp"))
-    print("PID position z Ki", qcf.cf.param.get_value("posCtlPid.zKi"))
-    print("PID position z Kd", qcf.cf.param.get_value("posCtlPid.zKd"))
-    #
     pid_gains = {
         "pid_rate": {
             "roll_kp": qcf.cf.param.get_value("pid_rate.roll_kp"),
@@ -243,6 +202,7 @@ with QualisysCrazyflie(
         callback = partial(log_callback, data_log=data, key=group)
         logconf.data_received_cb.add_callback(callback)
         logconf.start()
+    
     # MAIN LOOP WITH SAFETY CHECK
     while qcf.is_safe():
 
@@ -251,20 +211,23 @@ with QualisysCrazyflie(
             break
         # Mind the clock
         dt = time() - t
-        # Calculate Crazyflie's angular position in circle, based on time
-        phi = circle_speed_factor * dt * 360
-        if dt < 3:
-            if time() - last_saved_t > save_freq:
-                data["time"].append(time())
-                last_saved_t = time()
-                continue
+        
+        if dt < 40:
+            print(f"[t={dt}]")
+            # Set target
+            _x, _y = utils.pol2cart(circle_radius, 0.0)
+            target = Pose(
+                world.origin.x + _x, world.origin.y + _y, 1.0, yaw=90.0
+            )
         else:
-            for logconf in conf_list:
-                logconf.stop()
             break
+    
+    # Stop logging data from the flapper firmware
+    for logconf in conf_list:
+        logconf.stop()
 
 # Open a file in write mode and use json.dump() to write the dictionary to the file
-with open("data.json", "w") as file:
+with open("test_data.json", "w") as file:
     json.dump(data, file, indent=4)
 
 print("Dictionary has been saved to data.json")
