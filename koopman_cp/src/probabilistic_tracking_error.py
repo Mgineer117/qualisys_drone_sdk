@@ -75,9 +75,13 @@ class ProbabilisticTrackingError:
         with open(file_path, 'r') as f:
             return json.load(f)
     
-    def extract_poses_and_targets(self, data: Dict) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    def extract_poses_and_targets(self, data: Dict, file_path: str = None) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
         """
         Extract pose and target data from JSON.
+        
+        Args:
+            data: JSON data dictionary
+            file_path: Path to JSON file (used to determine trajectory type)
         
         Returns:
             poses: (N, 3) array of actual positions
@@ -97,7 +101,7 @@ class ProbabilisticTrackingError:
         # Handle targets
         if len(targets) == 0:
             # If no targets provided, generate ideal circular trajectory as reference
-            targets = self.generate_circular_reference(poses, times)
+            targets = self.generate_circular_reference(poses, times, file_path)
         elif len(targets.shape) == 2 and targets.shape[1] >= 3:
             targets = targets[:, :3]  # Take only x, y, z
         elif len(targets.shape) == 1:
@@ -105,60 +109,130 @@ class ProbabilisticTrackingError:
             
         return poses, targets, times
     
-    def generate_circular_reference(self, poses: np.ndarray, times: np.ndarray, 
-                                  radius: float = 0.5) -> np.ndarray:
+    def calc_target(self, trajectory_type: str, t: float, omega: float = 10.0) -> Tuple[float, float, float]:
         """
-        Generate ideal circular trajectory as reference targets.
+        Calculate target position using the same logic as solo_koopman_conformal_circle.py
         
         Args:
-            poses: Actual pose data to determine center and trajectory pattern
-            times: Time array
-            radius: Radius for circular trajectory
+            trajectory_type: Type of trajectory (XZ, YZ, XY, XYZ, XY2Z)
+            t: Time in seconds
+            omega: Angular velocity in degrees per second
             
         Returns:
-            targets: (N, 3) array of ideal circular positions
+            target_x, target_y, target_z coordinates
+        """
+        theta = omega * t / 180 * np.pi
+        
+        if trajectory_type == "XZ":
+            target_x = 0.5 * np.cos(theta)
+            target_y = 0.0
+            target_z = 0.5 * np.sin(theta) + 1.00
+        elif trajectory_type == "YZ":
+            target_x = 0.0
+            target_y = 0.5 * np.cos(theta)
+            target_z = 0.5 * np.sin(theta) + 1.00
+        elif trajectory_type == "XY":
+            target_x = np.cos(theta)
+            target_y = np.sin(theta)
+            target_z = 1.00
+        elif trajectory_type == "XYZ":
+            target_x = np.cos(theta)
+            target_y = np.sin(theta)
+            target_z = 0.5 * np.sin(theta) + 1.00
+        elif trajectory_type == "XY2Z":
+            target_x = np.cos(theta)
+            target_y = np.sin(theta)
+            target_z = 0.30 * np.sin(2 * theta) + 1.00
+        else:
+            # Default to XY trajectory
+            target_x = np.cos(theta)
+            target_y = np.sin(theta)
+            target_z = 1.00
+            
+        return target_x, target_y, target_z
+    
+    def get_trajectory_type_from_filename(self, file_path: str) -> str:
+        """
+        Extract trajectory type from filename.
+        
+        Args:
+            file_path: Path to JSON file
+            
+        Returns:
+            Trajectory type string (XY, XZ, YZ, XYZ, XY2Z)
+        """
+        if file_path is None:
+            return "XY"  # Default
+            
+        filename = Path(file_path).stem.upper()
+        
+        # Check for trajectory types in filename
+        if "XY2Z" in filename:
+            return "XY2Z"
+        elif "XYZ" in filename:
+            return "XYZ"
+        elif "XY" in filename:
+            return "XY"
+        elif "XZ" in filename:
+            return "XZ"
+        elif "YZ" in filename:
+            return "YZ"
+        else:
+            return "XY"  # Default
+    
+    def generate_circular_reference(self, poses: np.ndarray, times: np.ndarray, 
+                                  file_path: str = None) -> np.ndarray:
+        """
+        Generate ideal circular trajectory as reference targets using calc_target.
+        
+        Args:
+            poses: Actual pose data to determine trajectory pattern
+            times: Time array from JSON file
+            file_path: Path to JSON file (used to determine trajectory type)
+            
+        Returns:
+            targets: (N, 3) array of ideal target positions
         """
         if len(poses) == 0:
             return np.array([])
             
-        # Estimate center from pose data
-        center = np.mean(poses, axis=0)
+        # Get trajectory type from filename
+        trajectory_type = self.get_trajectory_type_from_filename(file_path)
         
-        # Generate circular trajectory
-        if len(times) > 0:
-            time_steps = times - times[0]  # Start from t=0
-        else:
-            time_steps = np.arange(len(poses)) * 0.1  # Assume 0.1s intervals
+        # Use actual times from JSON
+        if len(times) == 0:
+            times = np.arange(len(poses)) * 0.1  # Fallback to 0.1s intervals
             
-        # Estimate angular frequency from data
+        # Detect hover phase end (when significant movement starts)
+        hover_end_idx = 0
+        takeoff_sec = 5.0  # Default takeoff duration
+        
         if len(poses) > 10:
-            # Calculate rough angular velocity from first and last 10% of trajectory
-            start_poses = poses[:len(poses)//10]
-            end_poses = poses[-len(poses)//10:]
-            
-            start_angle = np.mean([math.atan2(p[1] - center[1], p[0] - center[0]) for p in start_poses])
-            end_angle = np.mean([math.atan2(p[1] - center[1], p[0] - center[0]) for p in end_poses])
-            
-            angle_diff = end_angle - start_angle
-            # Handle wraparound
-            if angle_diff > math.pi:
-                angle_diff -= 2 * math.pi
-            elif angle_diff < -math.pi:
-                angle_diff += 2 * math.pi
-                
-            total_time = time_steps[-1] if len(time_steps) > 0 else len(poses) * 0.1
-            omega = angle_diff / total_time if total_time > 0 else 0.1  # rad/s
-        else:
-            omega = 0.1  # Default angular velocity
+            # Find when drone starts moving significantly from initial position
+            initial_pos = poses[0]
+            for i, pose in enumerate(poses):
+                if np.linalg.norm(pose - initial_pos) > 0.1:  # 10cm threshold
+                    hover_end_idx = max(0, i - 5)  # Back up a bit for safety
+                    if i < len(times):
+                        takeoff_sec = times[hover_end_idx]
+                    break
         
-        # Generate ideal circular trajectory
+        # Generate target trajectory
         targets = np.zeros_like(poses)
-        for i, t in enumerate(time_steps):
-            angle = omega * t
-            targets[i, 0] = center[0] + radius * math.cos(angle)
-            targets[i, 1] = center[1] + radius * math.sin(angle)
-            targets[i, 2] = center[2]  # Keep z constant
-            
+        
+        # Angular velocity: 10 deg/s (from config)
+        omega = 10.0  # deg/s
+        
+        for i, t in enumerate(times):
+            if t < takeoff_sec:
+                # Hover phase: target is [0, 0, 1]
+                targets[i] = np.array([0.0, 0.0, 1.0])
+            else:
+                # Circular phase: use calc_target
+                t_circular = t - takeoff_sec
+                target_x, target_y, target_z = self.calc_target(trajectory_type, t_circular, omega)
+                targets[i] = np.array([target_x, target_y, target_z])
+                
         return targets
     
     def detect_liftoff_end(self, targets: np.ndarray) -> int:
@@ -261,7 +335,7 @@ class ProbabilisticTrackingError:
         """
         # Load and process data
         data = self.load_trajectory_data(file_path)
-        poses, targets, times = self.extract_poses_and_targets(data)
+        poses, targets, times = self.extract_poses_and_targets(data, file_path)
         
         # Remove liftoff phase
         liftoff_end = self.detect_liftoff_end(targets)
@@ -326,7 +400,7 @@ class ProbabilisticTrackingError:
             return
         # Load and process data
         data = self.load_trajectory_data(file_path)
-        poses, targets, times = self.extract_poses_and_targets(data)
+        poses, targets, times = self.extract_poses_and_targets(data, file_path)
         
         # Remove liftoff phase
         liftoff_end = self.detect_liftoff_end(targets)
