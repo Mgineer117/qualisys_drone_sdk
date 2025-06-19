@@ -422,13 +422,16 @@ Validation Summary:
 def main():
     """Main function to demonstrate theoretical bounds validation."""
     
-    # Initialize parameters
+    # Initialize parameters with example quantiles
+    # NOTE: In practice, these quantiles should be calculated externally
     params = ConformalKoopmanParams(
-        alpha=0.1,  # 10% for forward embedding
-        beta=0.1,   # 10% for inverse embedding  
-        gamma=0.9,  # Lyapunov contraction rate
-        rho=0.01,   # Robustification constant
-        K=50        # Prediction horizon
+        forward_quantile=1.0,   # Example forward embedding quantile q_fwd(1-α/K)
+        inverse_quantile=0.8,   # Example inverse embedding quantile q_inv(1-β)
+        gamma=0.9,              # Lyapunov contraction rate
+        rho=0.01,               # Robustification constant
+        K=50,                   # Prediction horizon
+        alpha=0.1,              # Confidence level for forward embedding
+        beta=0.1                # Confidence level for inverse embedding
     )
     
     # Create validator

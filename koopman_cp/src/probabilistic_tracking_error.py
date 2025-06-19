@@ -39,12 +39,15 @@ except ImportError:
 @dataclass
 class ConformalKoopmanParams:
     """Parameters for conformal Koopman tracking error calculation."""
-    alpha: float = 0.1  # Confidence level for forward embedding (1-alpha confidence)
-    beta: float = 0.1   # Confidence level for inverse embedding (1-beta confidence)
-    gamma: float = 0.9  # Lyapunov contraction rate
-    rho: float = 0.01   # Robustification constant
-    cv: float = 1.0     # Weight for Lyapunov modeling error
-    K: int = 100        # Prediction horizon
+    forward_quantile: float  # Forward embedding quantile q_fwd(1-α/K)
+    inverse_quantile: float  # Inverse embedding quantile q_inv(1-β)
+    gamma: float = 0.9       # Lyapunov contraction rate
+    rho: float = 0.01        # Robustification constant
+    cv: float = 1.0          # Weight for Lyapunov modeling error
+    K: int = 100             # Prediction horizon
+    # Keep alpha and beta for probability bound calculation
+    alpha: float = 0.1       # Confidence level for forward embedding
+    beta: float = 0.1        # Confidence level for inverse embedding
 
 
 @dataclass  
@@ -194,55 +197,6 @@ class ProbabilisticTrackingError:
         tracking_errors = np.linalg.norm(poses - targets, axis=1)
         return tracking_errors
     
-    def calculate_forward_nonconformity_scores(self, tracking_errors: np.ndarray, 
-                                             delta_v: Optional[np.ndarray] = None) -> np.ndarray:
-        """
-        Calculate forward embedding nonconformity scores.
-        
-        s_fwd^(i) = Δv,k + Δd,k
-        
-        Args:
-            tracking_errors: Array of tracking errors (Δd,k)
-            delta_v: Array of Lyapunov modeling errors (optional)
-            
-        Returns:
-            Forward nonconformity scores
-        """
-        if delta_v is None:
-            delta_v = np.zeros_like(tracking_errors)
-        
-        return delta_v + tracking_errors
-    
-    def calculate_inverse_nonconformity_scores(self, poses: np.ndarray, 
-                                             predicted_poses: np.ndarray) -> np.ndarray:
-        """
-        Calculate inverse embedding nonconformity scores.
-        
-        s_inv^(i) = ||x^(i) - ĝ_inv(z^(i))||
-        
-        Args:
-            poses: (N, 3) actual positions
-            predicted_poses: (N, 3) predicted positions from inverse embedding
-            
-        Returns:
-            Inverse nonconformity scores
-        """
-        return np.linalg.norm(poses - predicted_poses, axis=1)
-    
-    def compute_quantiles(self, scores: np.ndarray, alpha: float) -> float:
-        """
-        Compute (1-alpha) quantile of nonconformity scores.
-        
-        Args:
-            scores: Array of nonconformity scores
-            alpha: Confidence level
-            
-        Returns:
-            (1-alpha) quantile value
-        """
-        if len(scores) == 0:
-            return 0.0
-        return np.quantile(scores, 1 - alpha)
     
     def calculate_lyapunov_based_bound(self, v0: float, forward_quantile: float) -> float:
         """
@@ -317,21 +271,11 @@ class ProbabilisticTrackingError:
         # Calculate tracking errors
         tracking_errors = self.calculate_tracking_errors(poses, targets)
         
-        # Forward embedding analysis
-        forward_scores = self.calculate_forward_nonconformity_scores(tracking_errors)
-        alpha_K = self.params.alpha / self.params.K
-        forward_quantile = self.compute_quantiles(forward_scores, alpha_K)
+        # Use provided quantiles from parameters
+        forward_quantile = self.params.forward_quantile
+        inverse_quantile = self.params.inverse_quantile
         
-        # Inverse embedding analysis (use tracking errors as approximation if no predicted poses)
-        if predicted_poses is not None:
-            inverse_scores = self.calculate_inverse_nonconformity_scores(poses, predicted_poses)
-        else:
-            # Approximate inverse scores using tracking errors
-            inverse_scores = tracking_errors
-        
-        inverse_quantile = self.compute_quantiles(inverse_scores, self.params.beta)
-        
-        # Calculate bounds
+        # Calculate bounds using provided quantiles
         v0 = tracking_errors[0] if len(tracking_errors) > 0 else 0.0
         lyapunov_bound = self.calculate_lyapunov_based_bound(v0, forward_quantile)
         delta_r = self.calculate_delta_r(forward_quantile)
@@ -434,13 +378,16 @@ class ProbabilisticTrackingError:
 def main():
     """Main function to demonstrate probabilistic tracking error analysis."""
     
-    # Initialize parameters
+    # Initialize parameters with example quantiles
+    # NOTE: In practice, these quantiles should be calculated externally
     params = ConformalKoopmanParams(
-        alpha=0.1,  # 90% confidence for forward embedding
-        beta=0.1,   # 90% confidence for inverse embedding
-        gamma=0.9,  # Lyapunov contraction rate
-        rho=0.01,   # Robustification constant
-        K=100       # Prediction horizon
+        forward_quantile=1.0,   # Example forward embedding quantile q_fwd(1-α/K)
+        inverse_quantile=0.8,   # Example inverse embedding quantile q_inv(1-β)
+        gamma=0.9,              # Lyapunov contraction rate
+        rho=0.01,               # Robustification constant
+        K=100,                  # Prediction horizon
+        alpha=0.1,              # Confidence level for forward embedding
+        beta=0.1                # Confidence level for inverse embedding
     )
     
     # Create analyzer
@@ -453,6 +400,7 @@ def main():
     if json_files:
         print("=== Probabilistic Tracking Error Analysis ===")
         print(f"Parameters: α={params.alpha}, β={params.beta}, γ={params.gamma}")
+        print(f"Forward quantile: {params.forward_quantile}, Inverse quantile: {params.inverse_quantile}")
         print(f"Confidence level: {(1-params.alpha-params.beta)*100:.1f}%")
         print()
         

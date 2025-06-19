@@ -19,16 +19,22 @@ def main():
     print()
     
     # Configure parameters for validation
+    # NOTE: In practice, quantiles should be calculated externally
     params = ConformalKoopmanParams(
-        alpha=0.1,   # 10% significance level for forward embedding
-        beta=0.1,    # 10% significance level for inverse embedding
-        gamma=0.9,   # Lyapunov contraction factor
-        rho=0.01,    # Robustification constant
-        K=50         # Prediction horizon
+        forward_quantile=1.0,   # Forward embedding quantile q_fwd(1-α/K) 
+        inverse_quantile=0.8,   # Inverse embedding quantile q_inv(1-β)
+        gamma=0.9,              # Lyapunov contraction factor
+        rho=0.0,                # Robustification constant
+        cv=0.01,                # Conformal variance (for empirical bounds)
+        K=10,                   # Prediction horizon
+        alpha=0.1,              # Confidence level for forward embedding
+        beta=0.1                # Confidence level for inverse embedding
     )
     
     print(f"Configuration:")
     print(f"  - Confidence level: {(1-params.alpha-params.beta)*100:.1f}%")
+    print(f"  - Forward quantile: {params.forward_quantile}")
+    print(f"  - Inverse quantile: {params.inverse_quantile}")
     print(f"  - Alpha (forward): {params.alpha}")
     print(f"  - Beta (inverse): {params.beta}")
     print(f"  - Gamma (contraction): {params.gamma}")
