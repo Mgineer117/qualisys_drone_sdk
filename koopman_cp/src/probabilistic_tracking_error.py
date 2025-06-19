@@ -203,6 +203,10 @@ class ProbabilisticTrackingError:
         if len(times) == 0:
             times = np.arange(len(poses)) * 0.1  # Fallback to 0.1s intervals
             
+        # Calculate time relative to start
+        time_start = times[0] if len(times) > 0 else 0.0
+        relative_times = times - time_start
+        
         # Detect hover phase end (when significant movement starts)
         hover_end_idx = 0
         takeoff_sec = 5.0  # Default takeoff duration
@@ -213,8 +217,8 @@ class ProbabilisticTrackingError:
             for i, pose in enumerate(poses):
                 if np.linalg.norm(pose - initial_pos) > 0.1:  # 10cm threshold
                     hover_end_idx = max(0, i - 5)  # Back up a bit for safety
-                    if i < len(times):
-                        takeoff_sec = times[hover_end_idx]
+                    if i < len(relative_times):
+                        takeoff_sec = relative_times[hover_end_idx]
                     break
         
         # Generate target trajectory
@@ -223,7 +227,12 @@ class ProbabilisticTrackingError:
         # Angular velocity: 10 deg/s (from config)
         omega = 10.0  # deg/s
         
-        for i, t in enumerate(times):
+        for i in range(len(poses)):
+            if i < len(relative_times):
+                t = relative_times[i]
+            else:
+                t = i * 0.1  # Fallback
+                
             if t < takeoff_sec:
                 # Hover phase: target is [0, 0, 1]
                 targets[i] = np.array([0.0, 0.0, 1.0])
