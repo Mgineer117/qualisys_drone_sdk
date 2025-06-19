@@ -9,7 +9,7 @@ import numpy as np
 
 # Load JSON file
 with open("examples/flapper/circular_traj/circular_Z_20250423191906.json", "r") as f:
-#with open("examples/flapper/test_data.json", "r") as f:    
+    # with open("examples/flapper/test_data.json", "r") as f:
     data = json.load(f)
 
 # Plot positions
@@ -231,29 +231,33 @@ for i in range(state_roll.shape[0]):
         ]
     )
     omega = np.array([gyro_x[i], -gyro_y[i], gyro_z[i]])
-    attitude_rate_trans[i,:] = R_hat @ omega
-    omega_trans[i,:] = np.linalg.inv(R_hat) @ [roll_rate_deriv[i], pitch_rate_deriv[i], yaw_rate_deriv[i]]
+    attitude_rate_trans[i, :] = R_hat @ omega
+    omega_trans[i, :] = np.linalg.inv(R_hat) @ [
+        roll_rate_deriv[i],
+        pitch_rate_deriv[i],
+        yaw_rate_deriv[i],
+    ]
 
 fig, axs = plt.subplots(3, 1, figsize=(8, 12))
-axs[0].plot(gyro_x, label='gyro_x')
-axs[0].plot(omega_trans[:,0], label='omega_x_trans')
+axs[0].plot(gyro_x, label="gyro_x")
+axs[0].plot(omega_trans[:, 0], label="omega_x_trans")
 axs[0].legend()
-axs[1].plot(-gyro_y, label='-gyro_y')
-axs[1].plot(omega_trans[:,1], label='omega_y_trans')
+axs[1].plot(-gyro_y, label="-gyro_y")
+axs[1].plot(omega_trans[:, 1], label="omega_y_trans")
 axs[1].legend()
-axs[2].plot(gyro_z, label='gyro_z')
-axs[2].plot(omega_trans[:,2], label='omega_z_trans')
+axs[2].plot(gyro_z, label="gyro_z")
+axs[2].plot(omega_trans[:, 2], label="omega_z_trans")
 axs[2].legend()
 plt.show()
 
 fig, axs = plt.subplots(3, 1, figsize=(8, 12))
-axs[0].plot(attitude_rate_trans[:,0], label='roll rate trans')
-axs[0].plot(roll_rate_deriv, label='roll rate deriv')
+axs[0].plot(attitude_rate_trans[:, 0], label="roll rate trans")
+axs[0].plot(roll_rate_deriv, label="roll rate deriv")
 axs[0].legend()
-axs[1].plot(attitude_rate_trans[:,1], label='pitch rate trans')
-axs[1].plot(pitch_rate_deriv, label='pitch rate deriv')
+axs[1].plot(attitude_rate_trans[:, 1], label="pitch rate trans")
+axs[1].plot(pitch_rate_deriv, label="pitch rate deriv")
 axs[1].legend()
-axs[2].plot(attitude_rate_trans[:,2], label='yaw rate trans')
-axs[2].plot(yaw_rate_deriv, label='yaw rate deriv')
+axs[2].plot(attitude_rate_trans[:, 2], label="yaw rate trans")
+axs[2].plot(yaw_rate_deriv, label="yaw rate deriv")
 axs[2].legend()
 plt.show()
