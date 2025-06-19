@@ -21,8 +21,8 @@ def main():
     # Configure parameters for validation
     # NOTE: In practice, quantiles should be calculated externally
     params = ConformalKoopmanParams(
-        forward_quantile=1.0,   # Forward embedding quantile q_fwd(1-α/K) 
-        inverse_quantile=0.8,   # Inverse embedding quantile q_inv(1-β)
+        forward_quantile=0.0858,   # Forward embedding quantile q_fwd(1-α/K) 
+        inverse_quantile=0.1350,   # Inverse embedding quantile q_inv(1-β)
         gamma=0.9,              # Lyapunov contraction factor
         rho=0.0,                # Robustification constant
         cv=0.01,                # Conformal variance (for empirical bounds)
@@ -54,7 +54,7 @@ def main():
     print(f"Found {len(json_files)} trajectory files for validation")
     
     # Validate first trajectory as detailed example
-    test_file = json_files[0]
+    test_file = json_files[6]
     print(f"\n📊 Detailed validation for: {test_file.name}")
     print("-" * 50)
     
@@ -92,6 +92,16 @@ def main():
     print(f"Overall results: {passed_count}/{len(all_results)} trajectories passed")
     print(f"Success rate: {passed_count/len(all_results)*100:.1f}%")
     
+    # Create plots for all trajectories
+    print(f"\n📈 Generating plots for all {len(json_files)} trajectories...")
+    for file_path in json_files:
+        try:
+            plot_path = data_path / f"validation_{file_path.stem}.png"
+            validator.plot_trajectory_with_bounds(str(file_path), str(plot_path))
+            print(f"  ✓ Plot saved: {plot_path.name}")
+        except Exception as e:
+            print(f"  ✗ Error plotting {file_path.name}: {e}")
+    
     # Key findings
     empirical_probs = [r.empirical_probability for r in all_results]
     mean_empirical = sum(empirical_probs) / len(empirical_probs)
@@ -100,6 +110,15 @@ def main():
     print(f"  - Mean empirical probability: {mean_empirical:.1%}")
     print(f"  - All trajectories stayed within theoretical bounds")
     print(f"  - Conformal prediction framework is well-calibrated")
+    
+    # Create summary plot
+    print(f"\n📊 Generating summary validation plot...")
+    try:
+        summary_plot_path = data_path / "validation_summary.png"
+        validator.plot_summary_validation(all_results, str(summary_plot_path))
+        print(f"Summary plot saved to: {summary_plot_path}")
+    except Exception as e:
+        print(f"⚠️  Could not create summary plot: {e}")
     
     # Save comprehensive report
     report = validator.generate_validation_report(all_results)

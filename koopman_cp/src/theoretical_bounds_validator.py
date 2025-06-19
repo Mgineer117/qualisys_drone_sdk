@@ -417,6 +417,112 @@ Validation Summary:
 """
         
         return report
+    
+    def plot_summary_validation(self, results: List[ValidationResults], save_path: Optional[str] = None):
+        """
+        Create a summary plot showing validation results for all trajectories.
+        
+        Args:
+            results: List of ValidationResults from multiple trajectories
+            save_path: Optional path to save plot
+        """
+        if not HAS_MATPLOTLIB:
+            print("Matplotlib not available. Skipping plot generation.")
+            return
+            
+        if not results:
+            print("No results to plot.")
+            return
+            
+        fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(14, 10))
+        
+        # Extract data
+        file_names = [r.file_name.replace('.json', '').upper() for r in results]
+        empirical_probs = [r.empirical_probability * 100 for r in results]
+        theoretical_prob = results[0].theoretical_probability * 100 if results else 80.0
+        mean_errors = [r.mean_tracking_error for r in results]
+        max_violations = [r.max_violation for r in results]
+        delta_r = results[0].bounds.delta_r if results else 0.858
+        
+        # 1. Empirical vs Theoretical Probability Bar Chart
+        x_pos = np.arange(len(file_names))
+        colors = ['green' if r.validation_passed else 'red' for r in results]
+        
+        bars = ax1.bar(x_pos, empirical_probs, color=colors, alpha=0.7, edgecolor='black')
+        ax1.axhline(y=theoretical_prob, color='blue', linestyle='--', linewidth=2, 
+                   label=f'Theoretical ({theoretical_prob:.0f}%)')
+        ax1.axhline(y=theoretical_prob - self.tolerance*100, color='orange', linestyle=':', 
+                   label=f'Tolerance ({theoretical_prob - self.tolerance*100:.0f}%)')
+        
+        ax1.set_xlabel('Trajectory Type')
+        ax1.set_ylabel('Empirical Probability (%)')
+        ax1.set_title('Empirical vs Theoretical Probability')
+        ax1.set_xticks(x_pos)
+        ax1.set_xticklabels(file_names, rotation=45, ha='right')
+        ax1.legend()
+        ax1.grid(True, alpha=0.3)
+        ax1.set_ylim(0, 105)
+        
+        # Add value labels on bars
+        for bar, prob in zip(bars, empirical_probs):
+            height = bar.get_height()
+            ax1.text(bar.get_x() + bar.get_width()/2., height + 1,
+                    f'{prob:.1f}%', ha='center', va='bottom', fontsize=8)
+        
+        # 2. Mean Tracking Error
+        bars2 = ax2.bar(x_pos, mean_errors, color='skyblue', alpha=0.7, edgecolor='black')
+        ax2.axhline(y=delta_r, color='red', linestyle='--', linewidth=2, 
+                   label=f'Δr bound ({delta_r:.3f}m)')
+        
+        ax2.set_xlabel('Trajectory Type')
+        ax2.set_ylabel('Mean Tracking Error (m)')
+        ax2.set_title('Mean Tracking Error by Trajectory')
+        ax2.set_xticks(x_pos)
+        ax2.set_xticklabels(file_names, rotation=45, ha='right')
+        ax2.legend()
+        ax2.grid(True, alpha=0.3)
+        
+        # 3. Success Rate Pie Chart
+        passed_count = sum(1 for r in results if r.validation_passed)
+        failed_count = len(results) - passed_count
+        
+        wedges, texts, autotexts = ax3.pie([passed_count, failed_count], 
+                                           labels=['Passed', 'Failed'],
+                                           colors=['green', 'red'],
+                                           autopct='%1.0f%%',
+                                           startangle=90)
+        ax3.set_title(f'Overall Validation Results (n={len(results)})')
+        
+        # 4. Max Violation vs Delta_r
+        colors4 = ['green' if v <= 0 else 'orange' if v <= delta_r*0.1 else 'red' 
+                  for v in max_violations]
+        bars4 = ax4.bar(x_pos, max_violations, color=colors4, alpha=0.7, edgecolor='black')
+        ax4.axhline(y=0, color='green', linestyle='-', linewidth=1)
+        ax4.axhline(y=delta_r*0.1, color='orange', linestyle=':', linewidth=1,
+                   label=f'10% of Δr ({delta_r*0.1:.3f}m)')
+        
+        ax4.set_xlabel('Trajectory Type')
+        ax4.set_ylabel('Maximum Violation (m)')
+        ax4.set_title('Maximum Bound Violations')
+        ax4.set_xticks(x_pos)
+        ax4.set_xticklabels(file_names, rotation=45, ha='right')
+        ax4.legend()
+        ax4.grid(True, alpha=0.3)
+        
+        # Overall title
+        mean_empirical = np.mean(empirical_probs)
+        plt.suptitle(f'Theoretical Bounds Validation Summary\n' + 
+                    f'Mean Empirical: {mean_empirical:.1f}%, Theoretical: {theoretical_prob:.0f}%, ' +
+                    f'Success Rate: {passed_count}/{len(results)} ({passed_count/len(results)*100:.0f}%)',
+                    fontsize=14, fontweight='bold')
+        
+        plt.tight_layout()
+        
+        if save_path:
+            plt.savefig(save_path, dpi=300, bbox_inches='tight')
+            print(f"Summary plot saved to: {save_path}")
+        
+        plt.show()
 
 
 def main():

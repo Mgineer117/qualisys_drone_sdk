@@ -101,12 +101,16 @@ class ProbabilisticTrackingError:
                     takeoff_end_idx = i
                     break
         
-        # Remove takeoff phase data
-        if takeoff_end_idx > 0:
-            poses = poses[takeoff_end_idx:] if len(poses) > takeoff_end_idx else poses
-            times = times[takeoff_end_idx:] if len(times) > takeoff_end_idx else times
-            if len(targets) > takeoff_end_idx:
-                targets = targets[takeoff_end_idx:]
+        # Add 50 steps after takeoff ends for stabilization
+        stabilization_steps = 50
+        actual_start_idx = takeoff_end_idx + stabilization_steps
+        
+        # Remove takeoff phase and stabilization period
+        if actual_start_idx > 0:
+            poses = poses[actual_start_idx:] if len(poses) > actual_start_idx else poses
+            times = times[actual_start_idx:] if len(times) > actual_start_idx else times
+            if len(targets) > actual_start_idx:
+                targets = targets[actual_start_idx:]
         
         # Ensure poses is properly shaped
         if len(poses.shape) == 2 and poses.shape[1] >= 3:
