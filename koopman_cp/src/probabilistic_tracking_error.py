@@ -91,6 +91,22 @@ class ProbabilisticTrackingError:
         poses = np.array(data.get('pose', []))
         targets = np.array(data.get('target', []))
         times = np.array(data.get('time', []))
+        controls = np.array(data.get('control', []))
+        
+        # Find where takeoff ends (control != [0, 0, 1])
+        takeoff_end_idx = 0
+        if len(controls) > 0:
+            for i, control in enumerate(controls):
+                if len(control) >= 3 and not np.allclose(control[:3], [0.0, 0.0, 1.0]):
+                    takeoff_end_idx = i
+                    break
+        
+        # Remove takeoff phase data
+        if takeoff_end_idx > 0:
+            poses = poses[takeoff_end_idx:] if len(poses) > takeoff_end_idx else poses
+            times = times[takeoff_end_idx:] if len(times) > takeoff_end_idx else times
+            if len(targets) > takeoff_end_idx:
+                targets = targets[takeoff_end_idx:]
         
         # Ensure poses is properly shaped
         if len(poses.shape) == 2 and poses.shape[1] >= 3:
@@ -203,23 +219,9 @@ class ProbabilisticTrackingError:
         if len(times) == 0:
             times = np.arange(len(poses)) * 0.1  # Fallback to 0.1s intervals
             
-        # Calculate time relative to start
+        # Calculate time relative to start (takeoff phase already removed)
         time_start = times[0] if len(times) > 0 else 0.0
         relative_times = times - time_start
-        
-        # Detect hover phase end (when significant movement starts)
-        hover_end_idx = 0
-        takeoff_sec = 5.0  # Default takeoff duration
-        
-        if len(poses) > 10:
-            # Find when drone starts moving significantly from initial position
-            initial_pos = poses[0]
-            for i, pose in enumerate(poses):
-                if np.linalg.norm(pose - initial_pos) > 0.1:  # 10cm threshold
-                    hover_end_idx = max(0, i - 5)  # Back up a bit for safety
-                    if i < len(relative_times):
-                        takeoff_sec = relative_times[hover_end_idx]
-                    break
         
         # Generate target trajectory
         targets = np.zeros_like(poses)
@@ -227,20 +229,16 @@ class ProbabilisticTrackingError:
         # Angular velocity: 10 deg/s (from config)
         omega = 10.0  # deg/s
         
+        # Since takeoff phase is already removed, generate circular trajectory directly
         for i in range(len(poses)):
             if i < len(relative_times):
                 t = relative_times[i]
             else:
                 t = i * 0.1  # Fallback
                 
-            if t < takeoff_sec:
-                # Hover phase: target is [0, 0, 1]
-                targets[i] = np.array([0.0, 0.0, 1.0])
-            else:
-                # Circular phase: use calc_target
-                t_circular = t - takeoff_sec
-                target_x, target_y, target_z = self.calc_target(trajectory_type, t_circular, omega)
-                targets[i] = np.array([target_x, target_y, target_z])
+            # Generate circular trajectory using calc_target
+            target_x, target_y, target_z = self.calc_target(trajectory_type, t, omega)
+            targets[i] = np.array([target_x, target_y, target_z])
                 
         return targets
     
@@ -342,14 +340,9 @@ class ProbabilisticTrackingError:
         Returns:
             TrackingErrorBounds object with results
         """
-        # Load and process data
+        # Load and process data (takeoff phase is removed in extract_poses_and_targets)
         data = self.load_trajectory_data(file_path)
         poses, targets, times = self.extract_poses_and_targets(data, file_path)
-        
-        # Remove liftoff phase
-        liftoff_end = self.detect_liftoff_end(targets)
-        poses = poses[liftoff_end:]
-        targets = targets[liftoff_end:]
         
         # Calculate tracking errors
         tracking_errors = self.calculate_tracking_errors(poses, targets)
@@ -407,14 +400,9 @@ class ProbabilisticTrackingError:
         if not HAS_MATPLOTLIB:
             print("Matplotlib not available. Skipping plot generation.")
             return
-        # Load and process data
+        # Load and process data (takeoff phase is removed in extract_poses_and_targets)
         data = self.load_trajectory_data(file_path)
         poses, targets, times = self.extract_poses_and_targets(data, file_path)
-        
-        # Remove liftoff phase
-        liftoff_end = self.detect_liftoff_end(targets)
-        poses = poses[liftoff_end:]
-        targets = targets[liftoff_end:]
         times = times[liftoff_end:] if len(times) > 0 else np.arange(len(poses))
         
         # Calculate tracking errors and bounds
