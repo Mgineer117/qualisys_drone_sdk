@@ -202,7 +202,7 @@ with QualisysCrazyflie(
         callback = partial(log_callback, data_log=data, key=group)
         logconf.data_received_cb.add_callback(callback)
         logconf.start()
-    
+
     # MAIN LOOP WITH SAFETY CHECK
     while qcf.is_safe():
 
@@ -211,17 +211,15 @@ with QualisysCrazyflie(
             break
         # Mind the clock
         dt = time() - t
-        
+
         if dt < 40:
             print(f"[t={dt}]")
             # Set target
             _x, _y = utils.pol2cart(circle_radius, 0.0)
-            target = Pose(
-                world.origin.x + _x, world.origin.y + _y, 1.0, yaw=90.0
-            )
+            target = Pose(world.origin.x + _x, world.origin.y + _y, 1.0, yaw=90.0)
         else:
             break
-    
+
     # Stop logging data from the flapper firmware
     for logconf in conf_list:
         logconf.stop()
