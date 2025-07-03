@@ -54,32 +54,32 @@ def main():
     print(f"Found {len(json_files)} trajectory files for validation")
     
     # Validate first trajectory as detailed example
-    test_file = json_files[6]
-    print(f"\n📊 Detailed validation for: {test_file.name}")
-    print("-" * 50)
+    # test_file = json_files[6]
+    # print(f"\n📊 Detailed validation for: {test_file.name}")
+    # print("-" * 50)
     
-    result = validator.validate_single_trajectory(str(test_file))
+    # result = validator.validate_single_trajectory(str(test_file))
     
-    print(f"Theoretical probability: {result.theoretical_probability:.1%}")
-    print(f"Empirical probability:   {result.empirical_probability:.1%}")
-    print(f"Difference:              {result.empirical_probability - result.theoretical_probability:+.1%}")
-    print(f"Validation status:       {'✅ PASSED' if result.validation_passed else '❌ FAILED'}")
-    print()
-    print(f"Trajectory analysis:")
-    print(f"  - Total points: {result.total_points}")
-    print(f"  - Points within bounds: {result.points_within_bounds}")
-    print(f"  - Mean tracking error: {result.mean_tracking_error:.4f} ± {result.std_tracking_error:.4f} m")
-    print(f"  - Maximum violation: {result.max_violation:.4f} m")
-    print(f"  - Theoretical bound (Δr): {result.bounds.delta_r:.4f} m")
-    print()
+    # print(f"Theoretical probability: {result.theoretical_probability:.1%}")
+    # print(f"Empirical probability:   {result.empirical_probability:.1%}")
+    # print(f"Difference:              {result.empirical_probability - result.theoretical_probability:+.1%}")
+    # print(f"Validation status:       {'✅ PASSED' if result.validation_passed else '❌ FAILED'}")
+    # print()
+    # print(f"Trajectory analysis:")
+    # print(f"  - Total points: {result.total_points}")
+    # print(f"  - Points within bounds: {result.points_within_bounds}")
+    # print(f"  - Mean tracking error: {result.mean_tracking_error:.4f} ± {result.std_tracking_error:.4f} m")
+    # print(f"  - Maximum violation: {result.max_violation:.4f} m")
+    # print(f"  - Theoretical bound (Δr): {result.bounds.delta_r:.4f} m")
+    # print()
     
-    # Create detailed visualization
-    try:
-        plot_path = data_path / f"validation_example_{test_file.stem}.png"
-        validator.plot_trajectory_with_bounds(str(test_file), str(plot_path))
-        print(f"📈 Detailed plot saved to: {plot_path}")
-    except Exception as e:
-        print(f"⚠️  Could not create plot: {e}")
+    # # Create detailed visualization
+    # try:
+    #     plot_path = data_path / f"validation_example_{test_file.stem}.png"
+    #     validator.plot_trajectory_with_bounds(str(test_file), str(plot_path))
+    #     print(f"📈 Detailed plot saved to: {plot_path}")
+    # except Exception as e:
+    #     print(f"⚠️  Could not create plot: {e}")
     
     # Validate all trajectories for summary
     print(f"\n📋 Summary validation for all {len(json_files)} trajectories:")

@@ -89,7 +89,6 @@ class ProbabilisticTrackingError:
             times: (N,) array of timestamps
         """
         poses = np.array(data.get('pose', []))
-        targets = np.array(data.get('target', []))
         times = np.array(data.get('time', []))
         controls = np.array(data.get('control', []))
         
@@ -119,13 +118,9 @@ class ProbabilisticTrackingError:
             poses = poses.reshape(-1, 3) if len(poses) % 3 == 0 else poses.reshape(-1, 1)
             
         # Handle targets
-        if len(targets) == 0:
-            # If no targets provided, generate ideal circular trajectory as reference
-            targets = self.generate_circular_reference(poses, times, file_path)
-        elif len(targets.shape) == 2 and targets.shape[1] >= 3:
-            targets = targets[:, :3]  # Take only x, y, z
-        elif len(targets.shape) == 1:
-            targets = targets.reshape(-1, 3) if len(targets) % 3 == 0 else targets.reshape(-1, 1)
+        # If no targets provided, generate ideal circular trajectory as reference
+        targets = self.generate_circular_reference(poses, times, file_path)
+
             
         return poses, targets, times
     
@@ -152,21 +147,21 @@ class ProbabilisticTrackingError:
             target_y = 0.5 * np.cos(theta)
             target_z = 0.5 * np.sin(theta) + 1.00
         elif trajectory_type == "XY":
-            target_x = np.cos(theta)
-            target_y = np.sin(theta)
+            target_x = 1.0 * np.cos(theta)  # Use 1.0 radius for XY plane
+            target_y = 1.0 * np.sin(theta)
             target_z = 1.00
         elif trajectory_type == "XYZ":
-            target_x = np.cos(theta)
-            target_y = np.sin(theta)
+            target_x = 1.0 * np.cos(theta)  # Use 1.0 radius for XY plane
+            target_y = 1.0 * np.sin(theta)
             target_z = 0.5 * np.sin(theta) + 1.00
         elif trajectory_type == "XY2Z":
-            target_x = np.cos(theta)
-            target_y = np.sin(theta)
+            target_x = 1.0 * np.cos(theta)  # Use 1.0 radius for XY plane
+            target_y = 1.0 * np.sin(theta)
             target_z = 0.30 * np.sin(2 * theta) + 1.00
         else:
             # Default to XY trajectory
-            target_x = np.cos(theta)
-            target_y = np.sin(theta)
+            target_x = 1.0 * np.cos(theta)
+            target_y = 1.0 * np.sin(theta)
             target_z = 1.00
             
         return target_x, target_y, target_z
@@ -184,18 +179,19 @@ class ProbabilisticTrackingError:
         if file_path is None:
             return "XY"  # Default
             
-        filename = Path(file_path).stem.upper()
+        filename = Path(file_path).stem.lower()  # Keep lowercase for comparison
         
-        # Check for trajectory types in filename
-        if "XY2Z" in filename:
+        # Check for trajectory types at the beginning of filename
+        # Priority order: longest patterns first to avoid false matches
+        if filename.startswith("xy2z"):
             return "XY2Z"
-        elif "XYZ" in filename:
+        elif filename.startswith("xyz"):
             return "XYZ"
-        elif "XY" in filename:
+        elif filename.startswith("xy"):
             return "XY"
-        elif "XZ" in filename:
+        elif filename.startswith("xz"):
             return "XZ"
-        elif "YZ" in filename:
+        elif filename.startswith("yz"):
             return "YZ"
         else:
             return "XY"  # Default
