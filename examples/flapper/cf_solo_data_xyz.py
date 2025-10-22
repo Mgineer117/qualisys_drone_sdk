@@ -18,7 +18,7 @@ from cflib.crazyflie.syncLogger import SyncLogger
 
 
 from qfly import Pose, QualisysCrazyflie, World, utils
-from qfly.functions import generate_reference_trajectory, get_logger
+from functions import generate_reference_trajectory, get_logger
 
 # SETTINGS
 cf_body_name = "flapper"  # QTM rigid body name
