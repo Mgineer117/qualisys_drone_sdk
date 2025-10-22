@@ -56,7 +56,7 @@ with QualisysCrazyflie(
     cf_body_name, cf_uri, world, marker_ids=cf_marker_ids, qtm_ip=qtm_ip
 ) as qcf:
 
-    def get_state(qcf: QualisysCrazyflie, time_taken:float) -> np.ndarray:
+    def get_state(qcf: QualisysCrazyflie, time_taken: float) -> np.ndarray:
         """Determine current state of the Crazyflie."""
         pose = qcf.pose
         velocity = qcf.velocity
@@ -86,7 +86,6 @@ with QualisysCrazyflie(
     init_x = qcf.pose.x
     init_y = qcf.pose.y
     init_z = qcf.pose.z
-    vel_x = 
 
     # generate random x, y, delta z for specifying target
     delta_z = random.uniform(0.5, 1.0)
